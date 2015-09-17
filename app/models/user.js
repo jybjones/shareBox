@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
       //calling all the associations/models
 			associate: function(models) {
 				User.hasMany(models.Article);
-        User.hasOne(models.userProfile);
+        		User.hasOne(models.userProfile, {as: "Profile"});
 			}
 		}
 	);

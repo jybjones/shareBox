@@ -1,5 +1,5 @@
 {
-  "name": "Sh@reBox",
+  "name": "ShareBox",
   "description": "Sh@reBox, technologies used: MySQL, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).",
   "version": "0.1.0",
   "private": false,

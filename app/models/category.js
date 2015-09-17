@@ -1,17 +1,16 @@
 //this is where the tables are going to be created with//
 module.exports = function(sequelize, DataTypes) {
 
-	var item = sequelize.define('item', {
+	var category = sequelize.define('category', {
 			name:            DataTypes.STRING,
 			description:     DataTypes.TEXT
 		},
 		{
 			associate: function(models){
-				item.belongsTo(models.userProfile);
-				item.belongsTo(models.category);
+				//category.belongsTo(models.userProfile);
 			}
 		}
 	);
 
-	return item;
+	return category;
 };

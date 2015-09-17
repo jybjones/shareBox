@@ -25,7 +25,7 @@ exports.signin = function(req, res) {
  */
 exports.signup = function(req, res) {
     res.render('users/signup', {
-        title: 'Sign up',
+        title: 'Sign up'
     });
 };
 
@@ -57,8 +57,9 @@ exports.create = function(req, res) {
     user.salt = user.makeSalt();
     user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
     console.log('New User (local) : { id: ' + user.id + ' username: ' + user.username + ' }');
-    
-    user.save().then(function(){
+
+    user.save().then(function(suser){
+        db.userProfile.create({UserId: suser.id}).then(function(sProfile){console.log(sProfile.id);});
       req.login(user, function(err){
         if(err) return next(err);
         res.redirect('/');
