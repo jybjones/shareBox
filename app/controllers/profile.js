@@ -54,7 +54,8 @@ exports.profile = function(req, res, next, id) {
 exports.loadUserProfile = function(req, res, next) {
     db.userProfile.find({ where: {userId: req.user.id}, include: [db.User]}).then(function(profile){
         if(!profile){
-            return next(new Error('Failed to load profile for logged in user.'));
+          db.userProfile.create({UserId: req.user.id}).then(function(newProfile){req.profile = newProfile;});
+            // return next(new Error('Failed to load profile for logged in user.'));
         }else{
             req.profile = profile;
             return next();

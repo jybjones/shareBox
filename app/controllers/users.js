@@ -58,8 +58,8 @@ exports.create = function(req, res) {
     user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
     console.log('New User (local) : { id: ' + user.id + ' username: ' + user.username + ' }');
 
-    user.save().then(function(suser){
-        db.userProfile.create({UserId: suser.id}).then(function(sProfile){console.log(sProfile.id);});
+    user.save().then(function(newUser){
+        db.userProfile.create({UserId: newUser.id}).then(function(newProfile){console.log(newProfile.id);});
       req.login(user, function(err){
         if(err) return next(err);
         res.redirect('/#!/profile');
