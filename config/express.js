@@ -19,8 +19,8 @@ module.exports = function(app, passport) {
 
     winston.info('Initializing Express');
 
-    app.set('showStackError', true);    
-    
+    app.set('showStackError', true);
+
     //Prettify HTML
     app.locals.pretty = true;
 
@@ -33,7 +33,7 @@ module.exports = function(app, passport) {
     }));
 
     //Setting the fav icon and static folder
-    app.use(favicon(config.root + '/public/img/icons/favicon.ico'));
+    app.use(favicon(config.root + '/public/img/favs/favicon.ico'));
     app.use(express.static(config.root + '/public'));
 
     //Don't use logger for test env
