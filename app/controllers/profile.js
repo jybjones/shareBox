@@ -19,10 +19,14 @@ exports.show = function(req, res){
 exports.update = function(req, res){
     // create a new variable to hold the article that was placed on the req object.
     var profile = req.profile;
-console.log(req);
+
     profile.updateAttributes({
         firstName: req.body.firstName,
-        lastName: req.body.lastName
+        lastName: req.body.lastName,
+        address1: req.body.address1,
+        address2: req.body.address2,
+        city: req.body.city,
+        postalCode: req.body.postalCode
     }).then(function(a){
         return res.jsonp(a);
     }).catch(function(err){

@@ -44,7 +44,7 @@ angular.module('sharebox.profile').controller('ProfileController', ['$scope', '$
     //    });
     //};
 
-    $scope.show = function() {
+    $scope.load = function() {
         Profile.getProfile().success(function(profile){
             $scope.profile = profile;
         }).error(function(err){
@@ -52,10 +52,18 @@ angular.module('sharebox.profile').controller('ProfileController', ['$scope', '$
         });
     };
 
-    $scope.updateProfile = function(profile) {
-        Profile.updateProfile(profile).success(function(profile){
+    $scope.updateProfile = function() {
+        //console.log($scope.profile);
+        jQuery('#profileSubmitButton').html('Saving...');
+        Profile.updateProfile($scope.profile).success(function(profile){
             // Put redirect to show here.
             $scope.profile = profile;
+            setTimeout(
+                function(){
+                    jQuery('#profileSubmitButton').html('Save');
+                }, 1000
+            );
+
         }).error(function(err){
             // Error State
         });
@@ -68,4 +76,5 @@ angular.module('sharebox.profile').controller('ProfileController', ['$scope', '$
     //        $scope.article = article;
     //    });
     //};
+    $scope.load();
 }]);
