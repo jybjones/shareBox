@@ -26,6 +26,9 @@ public/lib
 test/coverage/
 migrations/
 
+# Secret Settings File IgnoreS
+secret/
+
 *.local
 
 # IDE files

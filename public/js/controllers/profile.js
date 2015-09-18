@@ -1,61 +1,71 @@
-angular.module('sharebox.profile').controller('profileController', ['$scope', '$routeParams', '$location', 'Global', function ($scope, $routeParams, $location, Global) {
+angular.module('sharebox.profile').controller('ProfileController', ['$scope', '$routeParams', '$location', 'Global', 'Profile', function ($scope, $routeParams, $location, Global, Profile) {
     $scope.global = Global;
+    //
+    //$scope.create = function() {
+    //    var article = new Articles({
+    //        title: this.title,
+    //        content: this.content
+    //    });
+    //
+    //    article.$save(function(response) {
+    //        console.log(response);
+    //        $location.path("articles/" + response.id);
+    //    });
+    //
+    //    this.title = "";
+    //    this.content = "";
+    //};
+    //
+    //$scope.remove = function(article) {
+    //    if (article) {
+    //        article.$remove();
+    //
+    //        for (var i in $scope.articles) {
+    //            if ($scope.articles[i] == article) {
+    //                $scope.articles.splice(i, 1);
+    //            }
+    //        }
+    //    }
+    //    else {
+    //        $scope.article.$remove();
+    //        $location.path('articles');
+    //    }
+    //};
+    //
+    //$scope.update = function() {
+    //    var article = $scope.article;
+    //    if (!article.updated) {
+    //        article.updated = [];
+    //    }
+    //    article.updated.push(new Date().getTime());
+    //
+    //    article.$update(function() {
+    //        $location.path('articles/' + article.id);
+    //    });
+    //};
 
-    $scope.create = function() {
-        var profile = new Profile({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            content: this.content
-        });
-
-        profile.$save(function(response) {
-            console.log(response);
-            $location.path("profile/" + response.id);
-        });
-
-        this.firstName = "";
-        this.content = "";
-    };
-
-    $scope.remove = function(profile) {
-        if (profile) {
-            profile.$remove();
-
-            for (var i in $scope.profile) {
-                if ($scope.profile[i] == profile) {
-                    $scope.profile.splice(i, 1);
-                }
-            }
-        }
-        else {
-            $scope.profile.$remove();
-            $location.path('profile');
-        }
-    };
-
-    $scope.update = function() {
-        var profile = $scope.profile;
-        if (!profile.updated) {
-            profile.updated = [];
-        }
-        article.updated.push(new Date().getTime());
-
-        article.$update(function() {
-            $location.path('articles/' + article.id);
-        });
-    };
-
-    $scope.find = function() {
-        Articles.query(function(articles) {
-            $scope.articles = articles;
-        });
-    };
-
-    $scope.findOne = function() {
-        Articles.get({
-            articleId: $routeParams.articleId
-        }, function(article) {
-            $scope.article = article;
+    $scope.show = function() {
+        Profile.getProfile().success(function(profile){
+            $scope.profile = profile;
+        }).error(function(err){
+            // Error State
         });
     };
+
+    $scope.updateProfile = function(profile) {
+        Profile.updateProfile(profile).success(function(profile){
+            // Put redirect to show here.
+            $scope.profile = profile;
+        }).error(function(err){
+            // Error State
+        });
+    };
+
+    //$scope.findOne = function() {
+    //    Articles.get({
+    //        articleId: $routeParams.articleId
+    //    }, function(article) {
+    //        $scope.article = article;
+    //    });
+    //};
 }]);

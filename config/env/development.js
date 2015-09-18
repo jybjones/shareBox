@@ -25,4 +25,4 @@ module.exports = {
         realm: "http://localhost:3000/",
         callbackURL: "http://localhost:3000/auth/google/callback"
     }
-}
+};

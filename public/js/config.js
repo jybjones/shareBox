@@ -2,6 +2,9 @@
 angular.module('sharebox').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+        when('/profile', {
+            templateUrl: 'views/profile/show.html'
+        }).
         when('/articles', {
             templateUrl: 'views/articles/list.html'
         }).
