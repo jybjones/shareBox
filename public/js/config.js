@@ -14,9 +14,17 @@ angular.module('sharebox').config(['$routeProvider',
         when('/articles/:articleId', {
             templateUrl: 'views/articles/view.html'
         }).
+        when('/home', {
+            templateUrl: 'views/home.html'
+        }).
         when('/', {
             templateUrl: 'views/index.html'
         }).
+//////////Profile View////////
+        when('/profile', {
+            templateUrl: 'views/profile/view.html'
+        }).
+
         otherwise({
             redirectTo: '/'
         });

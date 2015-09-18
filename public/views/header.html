@@ -1,7 +1,7 @@
 <div class="navbar-inner" data-ng-controller="HeaderController">
     <ul class="nav">
         <li>
-            <a class="brand" href="/">Sh@areBox</a>
+            <a class="brand" href=" {{ global.authenticated ? '/#!/home' : '/#!/'}}"> Sh@reBox</a>
         </li>
         <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
             <a href="#!/{{item.link}}">{{item.title}}</a>
@@ -20,6 +20,8 @@
 				{{global.user.name}} <b class="caret"></b>
 			</a>
             <ul class="dropdown-menu">
+                <li><a href="/#!/profile">Profile</a>
+                </li>
                 <li><a href="/signout">Signout</a>
                 </li>
             </ul>

@@ -42,7 +42,7 @@ exports.signout = function(req, res) {
  * Session
  */
 exports.session = function(req, res) {
-    res.redirect('/');
+      res.redirect('/#!/home');
 };
 
 /**
@@ -62,7 +62,7 @@ exports.create = function(req, res) {
         db.userProfile.create({UserId: suser.id}).then(function(sProfile){console.log(sProfile.id);});
       req.login(user, function(err){
         if(err) return next(err);
-        res.redirect('/');
+        res.redirect('/#!/profile');
       });
     }).catch(function(err){
       res.render('users/signup',{

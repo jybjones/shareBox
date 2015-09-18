@@ -11,9 +11,9 @@ exports.showPublic = function(req, res) {
 };
 
 exports.show = function(req, res){
-    //db.userProfile.find({ where: {userId: req.user.id}, include: [db.User]}).then(function(profile){
+    db.userProfile.find({ where: {userId: req.user.id}, include: [db.User]}).then(function(profile){
         res.jsonp(req.profile);
-    //});
+    });
 };
 
 exports.update = function(req, res){
@@ -55,26 +55,5 @@ exports.loadUserProfile = function(req, res, next) {
             req.profile = profile;
             return next();
         }
-    });
-};
-
-/**
- * Create a item
- */
-exports.create = function(req, res) {
-    // augment the item by adding the userProfileId
-    req.body.userProfileId = req.user.id;
-    // save and return and instance of article on the res object.
-    db.Article.create(req.body).then(function(article){
-        if(!article){
-            return res.send('users/signup', {errors: err});
-        } else {
-            return res.jsonp(article);
-        }
-    }).catch(function(err){
-        return res.send('users/signup', {
-            errors: err,
-            status: 500
-        });
     });
 };
