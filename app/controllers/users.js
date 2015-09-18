@@ -42,7 +42,7 @@ exports.signout = function(req, res) {
  * Session
  */
 exports.session = function(req, res) {
-      res.redirect('/#!/home');
+      res.redirect('/#!/home'); //angular route
 };
 
 /**
