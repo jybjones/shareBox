@@ -7,7 +7,14 @@ var db = require('../../config/sequelize');
  * List of Items
  */
 exports.showPublic = function(req, res) {
-    return res.jsonp(req.profile);
+    var cleanProfile = {
+        firstName: req.profile.firstName,
+        lastName: req.profile.lastName,
+        city: req.profile.city,
+        state: req.profile.stateId,
+        postalCode: req.profile.postalCode
+    };
+    return res.jsonp(cleanProfile);
 };
 
 exports.show = function(req, res){

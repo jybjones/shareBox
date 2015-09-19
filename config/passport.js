@@ -80,10 +80,10 @@ passport.use(new TwitterStrategy({
 passport.use(new FacebookStrategy({
         clientID: config.facebook.clientID,
         clientSecret: config.facebook.clientSecret,
-        callbackURL: config.facebook.callbackURL
+        callbackURL: config.facebook.callbackURL,
+        profileFields: ['email']
     },
     function(accessToken, refreshToken, profile, done) {
-
         db.User.find({where : {facebookUserId: profile.id}}).then(function(user){
             if(!user){
                 db.User.create({

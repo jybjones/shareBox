@@ -83,7 +83,7 @@ exports.me = function(req, res) {
  * Find user by id
  */
 exports.user = function(req, res, next, id) {
-    User.find({where : { id: id }}).then(function(user){
+    User.find({where : { id: id }, include: [db.userProfile]}).then(function(user){
       if (!user) return next(new Error('Failed to load User ' + id));
       req.profile = user;
       next();
