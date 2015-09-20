@@ -1,4 +1,4 @@
-angular.module('sharebox.profile').controller('ProfileController', ['$rootScope', '$scope', '$routeParams', '$location', 'Global', 'Profile', function ($rootScope, $scope, $routeParams, $location, Global, Profile) {
+angular.module('sharebox.profile').controller('ProfileController', ['$rootScope', '$scope', '$routeParams', '$location', 'Global', 'Profile', 'Lookup', function ($rootScope, $scope, $routeParams, $location, Global, Profile, Lookup) {
     $scope.global = Global;
 
     $scope.load = function() {
