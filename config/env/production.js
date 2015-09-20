@@ -1,5 +1,6 @@
 module.exports = {
     // This is your MYSQL Database configuration
+    port: 80,
     db: {
         name: "sharebox",
         password: "",

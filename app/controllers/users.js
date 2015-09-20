@@ -76,14 +76,20 @@ exports.create = function(req, res) {
  * Send User
  */
 exports.me = function(req, res) {
-    res.jsonp(req.user || null);
+    db.User.find({where : { id: req.user.id }, include: [{model: db.userProfile, as: 'Profile'}]}).then(function(user){
+        if (!user) return next(new Error('Failed to load User ' + id));
+        res.jsonp(user);
+    }).catch(function(err){
+        // Error State
+        res.jsonp(err);
+    });
 };
 
 /**
  * Find user by id
  */
 exports.user = function(req, res, next, id) {
-    User.find({where : { id: id }, include: [db.userProfile]}).then(function(user){
+    db.User.find({where : { id: id }, include: [{model: db.userProfile, as: 'Profile'}]}).then(function(user){
       if (!user) return next(new Error('Failed to load User ' + id));
       req.profile = user;
       next();

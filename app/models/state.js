@@ -2,8 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
 
 	var state = sequelize.define('state', {
-			name:            DataTypes.STRING,
-			description:     DataTypes.TEXT
+            code:      DataTypes.STRING,
+			state:     DataTypes.STRING
 		},
 		{
 			associate: function(models){

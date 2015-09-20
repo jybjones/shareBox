@@ -33,6 +33,7 @@ exports.update = function(req, res){
         address1: req.body.address1,
         address2: req.body.address2,
         city: req.body.city,
+        stateId: req.body.stateId,
         postalCode: req.body.postalCode
     }).then(function(a){
         return res.jsonp(a);

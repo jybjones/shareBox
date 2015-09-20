@@ -15,6 +15,9 @@ angular.module('sharebox.profile').controller('ProfileController', ['$rootScope'
         Profile.updateProfile($scope.profile).success(function(profile){
             // Put redirect to show here.
             $scope.profile = profile;
+
+            Global.updateUser();
+            Global.user = window.user;
             setTimeout(
                 function(){
                     jQuery('#profileSubmitButton').html('Save');
@@ -28,5 +31,14 @@ angular.module('sharebox.profile').controller('ProfileController', ['$rootScope'
         });
     };
 
+    $scope.loadStates = function(){
+        Lookup.getStates().success(function(states){
+            $scope.states = states;
+        }).error(function(err){
+
+        });
+    };
+
     $scope.load();
+    $scope.loadStates();
 }]);

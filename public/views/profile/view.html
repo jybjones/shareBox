@@ -27,7 +27,16 @@
 <div class="control-group">
   <label for="city" class="control-label">City</label>
   <div class="controls">
-    <input id="city" type="city" name="city" placeholder="City" ng-model='profile.city'/>
+      <input id="city" type="text" name="city" placeholder="City" ng-model='profile.city'/>
+  </div>
+</div>
+<div class="control-group">
+  <label for="state" class="control-label">State</label>
+  <div class="controls">
+      <select id="state" name="stateId" data-ng-model="profile.stateId"
+              data-ng-options="state.id as state.state for state in states">
+          <option value="">-- choose state --</option>
+      </select>
   </div>
 </div>
 <div class="control-group">

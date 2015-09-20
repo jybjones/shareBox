@@ -1,17 +1,35 @@
 var _ = require('lodash'),
-  glob = require('glob');
+  glob = require('glob')
+    fs = require('fs');
 
 // Load app configuration
 
 // _.assign combines the two objects into a bigger object.
-module.exports = _.assign(
+configFile = _.assign(
 	// configuration variables that will be the same across all environments
     require(__dirname + '/../config/env/all.js'),
     // configuration variables that are environment specific
-    require(__dirname + '/../config/env/' + process.env.NODE_ENV + '.js') || {},
-	// Config Variables in secrets.js
-	require(__dirname + '/../config/env/secret/secrets.js') || {}
+    require(__dirname + '/../config/env/' + process.env.NODE_ENV + '.js') || {}
 );
+
+try {
+    // Query the entry
+    stats = fs.lstatSync(__dirname + '/../config/env/secret/secrets.js');
+
+    // Is it a directory?
+    if (stats.isFile()) {
+        configFile = _.assign(
+            configFile,
+            // Config Variables in secrets.js
+            require(__dirname + '/../config/env/secret/secrets.js') || {}
+        );
+    }
+}
+catch (e) {
+    // ...
+}
+
+module.exports = configFile;
 
 /**
  * Get files by glob patterns

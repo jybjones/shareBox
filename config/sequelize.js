@@ -10,12 +10,38 @@ var db        = {};
 winston.info('Initializing Sequelize...');
 
 // create your instance of sequelize
+
+// Look for ClearDB MySQL Add-on
+if (process.env.CLEARDB_DATABASE_URL) {
+
+    match = process.env.CLEARDB_DATABASE_URL.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+)\/(.+)\?/);
+
+    config.db = {
+        username: match[1],
+        password: match[2],
+        name: match[4],
+        host: match[3],
+        port: 3306,
+        options: {
+            dialect: 'mysql',
+            protocol: 'mysql',
+            host: match[3],
+            port: 3306,
+            logging: false,
+            dialectOptions: {
+                ssl: true
+            }
+        }
+    };
+
+}
 var sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, {
   host: config.db.host,
   port: config.db.port,
   dialect: 'mysql',
   storage: config.db.storage,
-  logging: config.enableSequelizeLog ? winston.verbose : false
+  logging: config.enableSequelizeLog ? winston.verbose : false,
+  dialectOptions: process.env.CLEARDB_DATABASE_URL ? config.db.options.dialectOptions : false
 });
 
 // loop through all files in models directory ignoring hidden files and this file
