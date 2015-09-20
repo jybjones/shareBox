@@ -18,7 +18,7 @@ angular.module('sharebox').config(['$routeProvider',
             templateUrl: 'views/articles/view.html'
         }).
         when('/home', {
-            templateUrl: 'views/home.html'
+            templateUrl: 'views/items/listItems.html' // 'views/home.html'
         }).
         when('/', {
             templateUrl: 'views/index.html'
@@ -26,6 +26,20 @@ angular.module('sharebox').config(['$routeProvider',
 //////////Profile View////////
         when('/profile', {
             templateUrl: 'views/profile/view.html'
+        }).
+
+//////////Items View////////
+        when('/items', {
+            templateUrl: 'views/items/listMyItems.html' ///ALL MY item
+        }).
+        when('/items/create', {
+            templateUrl: 'views/items/createItem.html'
+        }).
+        when('/items/:itemId/edit', {
+            templateUrl: 'views/items/editItem.html'
+        }).
+        when('/items/:itemId', {
+            templateUrl: 'views/items/viewItem.html' //SINGLE items
         }).
 
         otherwise({

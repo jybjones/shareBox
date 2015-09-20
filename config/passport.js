@@ -1,7 +1,7 @@
 
 var passport = require('passport');
 var _ = require('lodash');
-// These are different types of authentication strategies that can be used with Passport. 
+// These are different types of authentication strategies that can be used with Passport.
 var LocalStrategy = require('passport-local').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -52,7 +52,7 @@ passport.use(new TwitterStrategy({
         callbackURL: config.twitter.callbackURL
     },
     function(token, tokenSecret, profile, done) {
-        
+
         db.User.find({where: {twitterUserId: profile.id}}).then(function(user){
             if(!user){
                 db.User.create({
@@ -68,7 +68,7 @@ passport.use(new TwitterStrategy({
                 winston.info('Login (twitter) : { id: ' + user.id + ', username: ' + user.username + ' }');
                 done(null, user);
             }
-        
+
         }).catch(function(err){
             done(err, null);
         });
@@ -81,9 +81,10 @@ passport.use(new FacebookStrategy({
         clientID: config.facebook.clientID,
         clientSecret: config.facebook.clientSecret,
         callbackURL: config.facebook.callbackURL,
-        profileFields: ['email']
+        profileFields: ['email', 'displayName', 'photos']
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log(profile);
         db.User.find({where : {facebookUserId: profile.id}}).then(function(user){
             if(!user){
                 db.User.create({
@@ -121,7 +122,7 @@ passport.use(new GoogleStrategy({
                 name: profile.displayName,
                 email: profile.emails[0].value,
                 username: profile.displayName.replace(/ /g,''),
-                openId: identifier, 
+                openId: identifier,
             }).then(function(u){
                 winston.info('New User (google) : { id: ' + u.id + ', username: ' + u.username + ' }');
                 done(null, u);

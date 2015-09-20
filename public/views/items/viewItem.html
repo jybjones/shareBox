@@ -1,0 +1,18 @@
+<section data-ng-controller="ItemsController" data-ng-init="findOne()">
+    <span>{{item.updatedAt | date:'medium'}}</span>/
+    <span>{{item.userProfile.firstName}}</span>
+    <h2>{{item.name}}</h2>
+    <div data-ng-show="global.user.Profile.id === item.userProfile.id">
+        <a class="btn" href="/#!/items/{{item.id}}/edit"> Edit
+          <!-- <i class="icon-edit">Edit</i> -->
+        </a>
+        <a class="btn" data-ng-click="remove();"> Delete
+            <!-- <i class="icon-trash">Delete</i> -->
+        </a>
+    </div>
+    <div data-ng-show="global.user.Profile.id != item.userProfile.id">
+        <a class="btn" href="/#!/items/{{item.id}}"> Borrow
+          <!-- <i class="icon-edit">Edit</i> -->
+        </a>
+    <div>{{item.description}}</div>
+</section>

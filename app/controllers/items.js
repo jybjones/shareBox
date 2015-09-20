@@ -20,6 +20,9 @@ exports.item = function(req, res, next, id){
     });
 };
 
+exports.show = function(req, res){
+    res.jsonp(req.item)
+};
 /**
  * List of Items
  */
@@ -36,13 +39,15 @@ exports.all = function(req, res) {
 
 exports.allMine = function(req, res) {
     console.log(req.user);
-    db.item.findAll({where: {userProfileId: 1}, include: [db.userProfile]}).then(function(items){
-        return res.jsonp(items);
-    }).catch(function(err){
-        return res.render('error', {
-            error: err,
-            status: 500
-        });
+    db.userProfile.find({ where: {userId: req.user.id}}).then(function(profile){
+      db.item.findAll({where: {userProfileId: profile.id}, include: [db.userProfile]}).then(function(items){
+          return res.jsonp(items);
+      }).catch(function(err){
+          return res.render('error', {
+              error: err,
+              status: 500
+          });
+      });
     });
 };
 

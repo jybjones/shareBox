@@ -13,14 +13,13 @@ app.route('/api/items')
     .get(items.all)
     .post(users.requiresLogin, items.create)
 ;
-app.route('/api/items/:itemId')
-    //.get(items.show)
-    .put(users.requiresLogin, items.hasAuthorization, items.update)
-    .delete(users.requiresLogin, items.hasAuthorization, items.destroy)
-;
-
 app.route('/api/items/mine')
     .get(users.requiresLogin, items.allMine)
+;
+app.route('/api/items/:itemId')
+    .get(items.show)
+    .put(users.requiresLogin, items.hasAuthorization, items.update)
+    .delete(users.requiresLogin, items.hasAuthorization, items.destroy)
 ;
 // Finish with setting up the articleId param
 // Note: the articles.article function will be called everytime then it will call the next function.
