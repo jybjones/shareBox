@@ -4,6 +4,20 @@
             <h2> Welcome {{global.user.Profile.firstName}}</h2>
           </div>
           <p class="lead">Here are some items your neighbors have posted. Click to get more info or see if it's available to borrow.</p>
+          <form role="form">
+   <!-- ////Search Btn/// -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" />
+          <div class="input-group-btn">
+            <button type="submit" class="btn">Search</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+</form>
+<hr>
 
           <ul class="thumbnails items">
             <li class=" thumbnail span3" data-ng-repeat="item in items" >

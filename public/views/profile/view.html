@@ -3,40 +3,148 @@
   <div class="jumbotron text-center">
     <h2>Please Update Profile</h2>
   </div>
-
 <section data-ng-controller="ProfileController">
+<form role="form"class='global-form create-name-form' name='createNameForm' ng-submit='updateProfile()' novalidate>
+  <div class="control-group"> <!-- //first name// -->
+    <div class="row">
+      <div class="col-xs-12">
+         <label for="firstName" class="control-label">First Name</label>
+        <div class="controls input-group input-group-lg">
+            <input id="firstName" type="text" name="firstName" placeholder="First Name" ng-model='profile.firstName'class="form-control"/>
+          <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
+    <div class="control-group"> <!-- //last name// -->
+    <div class="row">
+      <div class="col-xs-12">
+         <label for="lastName" class="control-label">Last Name</label>
+        <div class="controls input-group input-group-lg">
+            <input id="lastName" type="text" name="lastName" placeholder="Last Name" ng-model='profile.lastName' class="form-control"/>
+          <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
+    <div class="control-group">
+    <div class="row">
+      <div class="col-xs-12">
+         <label for="address1" class="control-label">Address1</label>
+        <div class="controls input-group input-group-lg">
+            <input id="address1" type="text" name="address1" placeholder="Address1" ng-model='profile.address1'class="form-control"/>
+          <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
+    <div class="control-group">
+    <div class="row">
+      <div class="col-xs-12">
+         <label for="address2" class="control-label">Address2</label>
+        <div class="controls input-group input-group-lg">
+            <input id="address2" type="text" name="address2" placeholder="Address2" ng-model='profile.address2'class="form-control"/>
+          <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
+    <div class="control-group">
+    <div class="row">
+      <div class="col-xs-12">
+         <label for="city" class="control-label">City</label>
+        <div class="controls input-group input-group-lg">
+            <input id="city" type="text" name="city" placeholder="City" ng-model='profile.city'class="form-control"/>
+          <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
+     <div class="control-group">
+    <div class="row">
+      <div class="col-xs-12">
+         <label for="state" class="control-label">State</label>
+        <div class="controls input-group input-group-lg">
+            <select id="state" name="stateId" data-ng-model="profile.stateId"
+              data-ng-options="state.id as state.state for state in states" class='form-control'>
+          <option value="">-- choose state --</option>
+      </select>
+          <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
+    <div class="control-group">
+    <div class="row">
+      <div class="col-xs-12">
+         <label for="postalCode" class="control-label">PostalCode</label>
+        <div class="controls input-group input-group-lg">
+            <input id="postalCode" type="postalCode" name="postalCode" placeholder="PostalCode" ng-model='profile.postalCode'class="form-control"/>
+          <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
+    <div class="control-group">
+    <div class="row">
+      <div class="col-xs-12">
+      <label for="" class=""></label>
+      <div class="form-actions">
+  <button type="submit" id="profileSubmitButton" class="btn btn-primary text-center form-control">Save ALL</button>
+</div>
+      <!-- <div class="controls input-group text-center form-control">
+    <div class="form-actions input-group-btn">
+            <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save All</button> -->
+</form>
+</section>
+
+<!-- <section data-ng-controller="ProfileController">
   <form class='global-form create-name-form' name='createNameForm' ng-submit='updateProfile()' novalidate>
-  <div class="control-group">
-  <label for="firstName" class="control-label">First Name</label>
-  <div class="controls">
-    <input id="firstName" type="text" name="firstName" placeholder="First Name" ng-model='profile.firstName'/>
-  </div>
+  <div class="control-group"> -->
+  <!-- <label for="firstName" class="control-label">First Name</label> -->
+  <!-- <div class="controls"> -->
+    <!-- <input id="firstName" type="text" name="firstName" placeholder="First Name" ng-model='profile.firstName'/> -->
+  <!-- </div>
 </div>
 <div class="control-group">
   <label for="lastName" class="control-label">Last Name</label>
   <div class="controls">
     <input id="lastName" type="text" name="lastName" placeholder="Last Name" ng-model='profile.lastName'/>
   </div>
-</div>
-<div class="control-group">
+</div> -->
+<!-- <div class="control-group">
   <label for="address1" class="control-label">Address1</label>
   <div class="controls">
     <input id="address1" type="text" name="address1" placeholder="Address1" ng-model='profile.address1'/>
   </div>
-</div>
-<div class="control-group">
+</div> -->
+<!-- <div class="control-group">
   <label for="address2" class="control-label">Address2</label>
   <div class="controls">
     <input id="address2" type="text" name="address2" placeholder="Address2" ng-model='profile.address2'/>
   </div>
-</div>
-<div class="control-group">
+</div> -->
+<!-- <div class="control-group">
   <label for="city" class="control-label">City</label>
   <div class="controls">
       <input id="city" type="text" name="city" placeholder="City" ng-model='profile.city'/>
   </div>
-</div>
-<div class="control-group">
+</div> -->
+<!-- <div class="control-group">
   <label for="state" class="control-label">State</label>
   <div class="controls">
       <select id="state" name="stateId" data-ng-model="profile.stateId"
@@ -44,21 +152,20 @@
           <option value="">-- choose state --</option>
       </select>
   </div>
-</div>
-<div class="control-group">
+</div> -->
+<!-- <div class="control-group">
   <label for="postalCode" class="control-label">PostalCode</label>
   <div class="controls">
     <input id="postalCode" type="postalCode" name="postalCode" placeholder="PostalCode" ng-model='profile.postalCode'/>
   </div>
-</div>
-<div class="form-actions">
+</div> -->
+<!-- <div class="form-actions">
   <button type="submit" id="profileSubmitButton" class="btn btn-primary">Save&nbsp;</button>
 </div>
     </form>
 </section>
+ -->
 
-
-<!-- Bryan's / -->
 
   <!-- FORM -->
   <form name='scheduleForm' ng-submit="vm.submit()" novalidate>
@@ -72,17 +179,5 @@
       <hr>
 
       <hr>
-        <div class="form-group">
-          <input type="text" class="form-control input-lg text-center" name="child1" placeholder="Child's Name" ng-model="vm.schedule.child1">
-          <hr>
-          <input type="text" class="form-control input-lg text-center" name="child2" placeholder="Child's Name" ng-model="vm.schedule.child2">
-          <hr>
-          <input type="text" class="form-control input-lg text-center" name="parent" placeholder="Parent's Name" ng-model="vm.schedule.parent">
-          <hr>
-          <input type="text" class="form-control input-lg text-center" name="babysitter" placeholder="Babysitter" ng-model="vm.schedule.babysitter">
-        </div>
-        <input type="submit" value="Add" class="btn btn-primary btn-lg">
-    </div>
-  </div>
  </form>
 </div>

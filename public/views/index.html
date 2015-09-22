@@ -1,19 +1,21 @@
 <section data-ng-controller="IndexController">
-<container>
+<div class="container">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<h1>WELCOME to Sh@reBox!!  </h1>
     <h2> Signup or Login</h2>
 
-  <div style="height: 305px">
-    <carousel interval="myInterval" no-wrap="noWrapSlides">
-      <slide ng-repeat="slide in slides" active="slide.active">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{$index+1}}</h4>
-          <p>{{slide.text}}</p>
-        </div>
-      </slide>
-    </carousel>
-  </div>
-</container>
+    <div class="landingCarousel" style="height: 305px">
+      <carousel interval="myInterval" no-wrap="noWrapSlides">
+        <slide ng-repeat="slide in slides" active="slide.active">
+          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <div class="carousel-caption">
+            <h4>Slide {{$index+1}}</h4>
+            <p>{{slide.text}}</p>
+          </div>
+        </slide>
+      </carousel>
+
+
+</div>
 </section>
+
