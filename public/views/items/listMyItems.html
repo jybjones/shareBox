@@ -1,11 +1,19 @@
 <section data-ng-controller="ItemsController" data-ng-init="loadMine()">
-  <ul class="articles unstyled">
-    <li data-ng-repeat="item in myItems">
-      <span>{{item.updatedAt | date:'medium'}}</span> /
-      <span>{{item.userProfile.firstName}}</span>
-      <h2><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h2>
-      <div>{{item.description}}</div>
-    </li>
-  </ul>
+  <section id="items">
+    <div class="page-header">
+            <h2> Welcome {{global.user.Profile.firstName}}</h2>
+          </div>
+    <p class="lead">List of My Items I'm Lending OR STORED/ AVAIL for OTHERS to BORROW!</p>
+      <ul class="thumbnails items">
+        <li class=" thumbnail span3" data-ng-repeat="item in myItems">
+    <!-- <li data-ng-repeat="item in myItems"> -->
+          <span>{{item.updatedAt | date:'medium'}}</span>
+          <span>{{item.userProfile.firstName}}</span>
+          <img src="assets/img/examples/bootstrap-example-starter.png" alt="">
+        <h4><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h4>
+          {{item.description}}
+        </li>
+       </ul>
+
   <h1 data-ng-hide="!myItems || myItems.length">No Items yet. <br> Why don't you <a href="/#!/items/create">Create One</a>?</h1>
 </section>

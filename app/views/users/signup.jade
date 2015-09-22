@@ -1,6 +1,7 @@
 extends auth
 
 block auth
+
   form.signup.form-horizontal(action="/users", method="post")
     .control-group
       label.control-label(for='email') Email
@@ -15,3 +16,7 @@ block auth
       button.btn.btn-primary(type='submit') Signup&nbsp;
       | or&nbsp;
       a.show-login(href="/signin") Login
+
+      //- a.button.btn.btn-primary(href="/auth/facebook") Sign up with Facebook
+      //- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      //- a.button.btn.btn-primary(href="/auth/twitter") &nbsp;&nbsp;Sign in with Twitter

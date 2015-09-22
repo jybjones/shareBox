@@ -29,8 +29,8 @@ angular.module('sharebox').config(['$routeProvider',
         }).
 
 //////////Items View////////
-        when('/items', {
-            templateUrl: 'views/items/listMyItems.html' ///ALL MY item
+        when('/items/listMyItems', {
+            templateUrl: 'views/items/listMyItems.html' ///ALL MY items
         }).
         when('/items/create', {
             templateUrl: 'views/items/createItem.html'
@@ -41,7 +41,9 @@ angular.module('sharebox').config(['$routeProvider',
         when('/items/:itemId', {
             templateUrl: 'views/items/viewItem.html' //SINGLE items
         }).
-
+        when('/items/listItems', {
+            templateUrl: 'views/items/listItems.html' //ALL items
+        }).
         otherwise({
             redirectTo: '/'
         });

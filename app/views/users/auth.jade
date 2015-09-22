@@ -3,12 +3,10 @@ extends ../layouts/default
 block content
   .row
     .span6
-      a(href="/auth/facebook")
-        img(src="/img/icons/facebook.png")
-      a(href="/auth/twitter")
-        img(src="/img/icons/twitter.png")
-      a(href="/auth/google")
-        img(src="/img/icons/google.png")
+      a.button.btn.btn-primary(href="/auth/facebook") Sign up with Facebook
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      a.button.btn.btn-primary(href="/auth/twitter") &nbsp;&nbsp;Sign in with Twitter
+
     .span6
       if message && message.length
         .fade.in.alert.alert-error

@@ -1,4 +1,25 @@
 <section data-ng-controller="ItemsController" data-ng-init="loadAll()">
+  <section id="items">
+          <div class="page-header">
+            <h2> Welcome {{global.user.Profile.firstName}}</h2>
+          </div>
+          <p class="lead">Here are some items your neighbors have posted. Click to get more info or see if it's available to borrow.</p>
+
+          <ul class="thumbnails items">
+            <li class=" thumbnail span3" data-ng-repeat="item in items" >
+              <span>{{item.updatedAt | date:'medium'}}</span>
+              <span>{{item.userProfile.firstName}}</span>
+
+                <img src="assets/img/examples/bootstrap-example-starter.png" alt="">
+                  <h4><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h4>
+                    {{item.description}}
+                      </li>
+                      </ul></a>
+        </section>
+
+
+<!-- __________________________////Originall///__________________________________________ -->
+<!-- <section data-ng-controller="ItemsController" data-ng-init="loadAll()">
   <h2> Welcome {{global.user.Profile.firstName}}</h2>
   <ul class="articles unstyled">
     <li data-ng-repeat="item in items">

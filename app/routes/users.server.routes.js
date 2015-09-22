@@ -44,18 +44,6 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', {
     failureRedirect: '/signin'
 }), users.authCallback);
 
-// Setting the google oauth routes
-app.get('/auth/google', passport.authenticate('google', {
-    failureRedirect: '/signin',
-    scope: [
-        'https://www.googleapis.com/auth/userinfo.profile',
-        'https://www.googleapis.com/auth/userinfo.email'
-    ]
-}), users.signin);
-
-app.get('/auth/google/callback', passport.authenticate('google', {
-    failureRedirect: '/signin'
-}), users.authCallback);
 
 // Finish with setting up the userId param
 app.param('userId', users.user);
