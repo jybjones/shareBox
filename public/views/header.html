@@ -1,4 +1,53 @@
 <div class="navbar-inner" data-ng-controller="HeaderController">
+    <nav class="navbar navbar-default" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ global.authenticated ? '/#!/home' : '/#!/' }}">Sh@reBox</a>
+      </div>
+
+    <ul class="nav navbar-nav" data-ng-hide="global.authenticated">
+        <li><a href="signup">Signup</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li><a href="signin">Login</a>
+        </li>
+    </ul>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+
+        <ul class="nav navbar-nav">
+          <!-- <li class="active"><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li> -->
+              <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+                <a href="#!/{{item.link}}">{{item.title}}</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" data-ng-show="global.authenticated">
+          <!--<li><a href="#">Link</a></li>-->
+          <li class="dropdown" dropdown>
+            <a href="#" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown">{{global.user.Profile.firstName ? global.user.Profile.firstName : global.user.email}}<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#!/profile">Profile</a></li>
+              <li><a href="/signout">Signout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+
+
+
+
+
+
+<!-- <div class="navbar-inner" data-ng-controller="HeaderController">
     <ul class="nav">
         <li>
             <a class="brand" href="{{ global.authenticated ? '/#!/home' : '/#!/' }}">Sh@reBox</a>
@@ -20,7 +69,7 @@
 				{{global.user.Profile.firstName ? global.user.Profile.firstName : global.user.email}} <b class="caret"></b>
 			</a>
             <ul class="dropdown-menu">
-                <li><a href="/#!/profile">Profile</a>
+                <li><a ng-click = href="/#!/profile">Profile</a>
                 </li>
                 <li><a href="/signout">Signout</a>
                 </li>
@@ -28,3 +77,5 @@
         </li>
     </ul>
 </div>
+
+ -->

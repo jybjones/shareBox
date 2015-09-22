@@ -1,11 +1,15 @@
 extends ../layouts/default
 
 block content
-  .row
-    .span6
-      a.button.btn.btn-primary(href="/auth/facebook") Sign up with Facebook
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      a.button.btn.btn-primary(href="/auth/twitter") &nbsp;&nbsp;Sign in with Twitter
+  .container
+      // HEADER
+      .jumbotron.text-center
+        h1 Welcome!
+
+        p {{ scope.tagline }}
+        a.button.btn.btn-primary(href='/auth/facebook') Sign In With Facebook
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        a.button.btn.btn-primary(href='/auth/twitter') Login With Twitter
 
     .span6
       if message && message.length

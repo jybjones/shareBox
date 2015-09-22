@@ -10,7 +10,7 @@ angular.module('sharebox.system').controller('HeaderController', ['$scope', 'Glo
     },
      {
         "title": "View All Items",
-        "link": "items/listItems"
+        "link": "items"
     },
     {
         "title": "Post New Item",

@@ -1,18 +1,27 @@
 extends auth
 
 block auth
-  form.signin.form-horizontal(action="/users/session", method="post")
+  form.signin.input-block-level(action="/users/session", method="post")
+    h2.form-signin-heading.text-center Please sign in
     .control-group
-      label.control-label(for='email') Email
+      label.control-label.input-lg.text-center(for='email') Email
       .controls
-        input#email(type='text', name="email", placeholder='Email')
-
+        input#email.form-control(type='text', name="email", placeholder='Email')
     .control-group
-      label.control-label(for='password') Password
+      label.control-label.input-lg.text-center(for='password') Password
       .controls
-        input#password(type='password', name="password", placeholder='Password')
-
+        input#password.form-control(type='password', name="password", placeholder='Password')
+        &nbsp;&nbsp;
     .form-actions
-      button.btn.btn-primary(type='submit') Log In&nbsp;
-      | or&nbsp;
-      a.show-signup(href="/signup") Register
+      button.btn.btn-primary.text-center.form-control(type='submit') Log In&nbsp;
+      label.control-label.input-lg.text-center(for='') Or
+      button.btn.btn-primary.a.show-login(href="/signup") Signin
+      label.control-label.input-lg.text-center(for='') Or
+      a.show-login(href="/signup") Register
+
+
+
+    //- .form-actions
+    //-   button.btn.btn-primary(type='submit') Log In&nbsp;
+    //-   | &nbsp;or&nbsp;
+    //-   a.show-signup(href="/signup") Register

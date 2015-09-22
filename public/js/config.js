@@ -41,7 +41,7 @@ angular.module('sharebox').config(['$routeProvider',
         when('/items/:itemId', {
             templateUrl: 'views/items/viewItem.html' //SINGLE items
         }).
-        when('/items/listItems', {
+        when('/items', {
             templateUrl: 'views/items/listItems.html' //ALL items
         }).
         otherwise({
