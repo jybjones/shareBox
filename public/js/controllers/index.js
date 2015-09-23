@@ -2,7 +2,7 @@ angular.module('sharebox.system').controller('IndexController', ['$scope', 'Glob
     $scope.global = Global;
 
 
-    $scope.myInterval = 5000;
+    $scope.myInterval = 6000;
     $scope.noWrapSlides = false;
     var slides = $scope.slides = [];
     var slides = $scope.slides = [
@@ -13,47 +13,47 @@ angular.module('sharebox.system').controller('IndexController', ['$scope', 'Glob
 
       {
         image: '/img/landing/share2.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share3.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share4.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share5.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share6.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share7.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share8.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share9.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share10.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share11.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       },
       {
         image: '/img/landing/share12.jpg',
-        text: 'Description Of Slide'
+        // text: 'Description Of Slide'
       }
 
       // {

@@ -66,6 +66,31 @@ a:hover, .btn.btn-primary:hover {
   padding-top:50px;
   text-align: center;
   height:100%;
-  display: block;
-  /*background-color:#FF9324;*/
+
 }
+
+.container-carousel {
+    width: 95%;
+    margin: 30px auto;
+    padding: 50px;
+    min-height: 400px;
+    height: auto;
+    background-color: #FFF;
+}
+.landingCarousel {
+  width: 100%;
+  display: block;
+      -moz-box-shadow: 0px 5px 20px #ccc;
+     -webkit-box-shadow: 0px 5px 20px #CCC;
+     box-shadow: 0px 5px 20px #CCC;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0px);
+    background-color: rgb(229, 227, 223);
+    z-index: 1;
+    width: 100%;
+    /*transform-origin: 399px 4px 0px;
+    transform: matrix(1, 0, 0, 1, 0, 0);*/
+
+}
+

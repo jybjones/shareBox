@@ -5,15 +5,15 @@
     </h2>
 </div>
 <section data-ng-controller="IndexController">
-<div class="container">
+<div class="container-carousel">
     <div class="landingCarousel">
    <!--  <div class="landingCarousel" style="height: 305px"> -->
       <carousel interval="myInterval" no-wrap="noWrapSlides">
         <slide ng-repeat="slide in slides" active="slide.active">
           <img ng-src="{{slide.image}}" style="margin:auto;">
           <div class="carousel-caption">
-            <h4>Slide {{$index+1}}</h4>
-            <p>{{slide.text}}</p>
+            <!-- <h4>Slide {{$index+1}}</h4> -->
+            <!-- <p>{{slide.text}}</p> -->
           </div>
         </slide>
       </carousel>
