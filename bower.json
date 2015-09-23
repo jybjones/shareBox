@@ -9,7 +9,7 @@
     "angular-route": "latest",
     "bootstrap": "3.3.4",
     "angular-bootstrap": "0.13.4",
-    "angular-ui-utils": "3.0.0"
+    "angular-ui-utils": "3.0.0",
     "ng-file-upload": "~7.3.6"
   }
 }
