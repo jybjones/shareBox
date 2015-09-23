@@ -1,23 +1,53 @@
+<section id="items">
+<div class="page-header">
+<h2> Welcome {{global.user.Profile.firstName}}</h2>
+  </div>
+  <p class="lead"><h3>Post A New Item to Store or Lend via Your Sh@reBox Location.</h3></p>
+
 <section data-ng-controller="ItemsController" data-ng-init="newItem()">
 <!-- <container class="forms"> -->
-  <form class="form-horizontal" data-ng-submit="create()">
+  <form role="form" class="form-horizontal" data-ng-submit="create()">
     <div class="control-group">
+      <div class="row">
+        <div class="col-xs-12">
       <label class="control-label" for="name">Title</label>
-      <div class="controls">
-        <input type="text" data-ng-model="newItem.name" id="name" placeholder="Title" required>
-      </div>
-    </div>
+      <div class="controls input-group input-group-lg">
+        <input type="text" class="form-control" data-ng-model="newItem.name" id="name" placeholder="Title" required>
+      <div class="form-actions input-group-btn">
+            <button type="submit" id="" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
     <div class="control-group">
       <label class="control-label" for="description">Content</label>
+
       <div class="controls">
-        <textarea data-ng-model="newItem.description" id="description" cols="30" rows="10" placeholder="Content"></textarea>
+        <textarea data-ng-model="newItem.description" id="description" cols="30" rows="10" placeholder="Content">
+        </textarea>
       </div>
     </div>
-    <div class="control-group">
-      <div class="controls">
-        <input type="submit" class="btn">
-      </div>
-    </div>
-  </form>
+
+
+  <!-- <div class="control-group">
+    <div class="row">
+      <div class="col-xs-12">
+      <label class="control-label" for="description">Content</label>
+      <div class="controls input-group input-group-lg">
+        <input id="description" data-ng-model="newItem.description" cols="30" rows="10" placeholder="Content"class="form-control"/> -->
+        <!-- <textarea data-ng-model="newItem.description" id="description" cols="30" rows="10" placeholder="Content"></textarea> -->
+       <div class="form-actions input-group-btn">
+        <button type="submit" id="" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
+
 <!-- </container> -->
-</section>
+
+
+
+
+
+

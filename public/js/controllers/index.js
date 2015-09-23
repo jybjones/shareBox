@@ -7,48 +7,52 @@ angular.module('sharebox.system').controller('IndexController', ['$scope', 'Glob
     var slides = $scope.slides = [];
     var slides = $scope.slides = [
       {
-        image: '/img/landing/share1.png',
+        image: '/img/landing/share1.jpg',
         text: 'Sh@reBox'
       },
 
       {
-        image: '/img/landing/share2.png',
+        image: '/img/landing/share2.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share3.png',
+        image: '/img/landing/share3.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share4.png',
+        image: '/img/landing/share4.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share5.png',
+        image: '/img/landing/share5.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share6.png',
+        image: '/img/landing/share6.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share7.png',
+        image: '/img/landing/share7.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share8.png',
+        image: '/img/landing/share8.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share9.png',
+        image: '/img/landing/share9.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share10.png',
+        image: '/img/landing/share10.jpg',
         text: 'Description Of Slide'
       },
       {
-        image: '/img/landing/share11.png',
+        image: '/img/landing/share11.jpg',
+        text: 'Description Of Slide'
+      },
+      {
+        image: '/img/landing/share12.jpg',
         text: 'Description Of Slide'
       }
 

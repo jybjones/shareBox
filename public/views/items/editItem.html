@@ -1,11 +1,23 @@
-<section data-ng-controller="ItemsController" data-ng-init="findOne()">
-	<form class="form-horizontal" data-ng-submit="update()">
-		<div class="control-group">
-			<label class="control-label" for="name">Title</label>
+<section id="items">
+<div class="page-header">
+<h2> Welcome {{global.user.Profile.firstName}}</h2>
+  </div>
+  <p class="lead"><h3> Edit Item To Add </h3></p>
 
-			<div class="controls">
-				<input type="text" data-ng-model="item.name" id="name" placeholder="Title" required>
-				</input>
+<section data-ng-controller="ItemsController" data-ng-init="findOne()">
+	<form fole ="form" class="form-horizontal" data-ng-submit="update()">
+		<div class="control-group">
+      <div class="row">
+        <div class="col-xs-12">
+      <label class="control-label" for="name">Title</label>
+      <div class="controls input-group input-group-lg">
+				<input type="text" class="form-control" data-ng-model="item.name" id="name" placeholder="Title" required>
+         <div class="form-actions input-group-btn">
+         <button type="submit" id="" class="btn btn-primary">Save&nbsp;</button>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-xs-12 -->
+    </div><!-- /.row -->
 			</div>
 		</div>
 		<div class="control-group">
@@ -18,7 +30,8 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<input type="submit" class="btn">
+				<!-- <input type="submit" class="btn btn-primary"> -->
+        <button type="submit" id="" class="btn btn-primary">Save&nbsp;</button>
 			</div>
 		</div>
 	</form>

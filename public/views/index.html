@@ -1,10 +1,13 @@
+<div class="container">
+<!-- <div class="jumbotron text-center"> -->
+  <h1>WELCOME to Sh@reBox!!</h1>
+    <h2> <a href="/signup">Signup</a> or <a href="/signin">Login</h2></a>
+    </h2>
+</div>
 <section data-ng-controller="IndexController">
 <div class="container">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<h1>WELCOME to Sh@reBox!!  </h1>
-    <h2> Signup or Login</h2>
-
-    <div class="landingCarousel" style="height: 305px">
+    <div class="landingCarousel">
+   <!--  <div class="landingCarousel" style="height: 305px"> -->
       <carousel interval="myInterval" no-wrap="noWrapSlides">
         <slide ng-repeat="slide in slides" active="slide.active">
           <img ng-src="{{slide.image}}" style="margin:auto;">
@@ -14,8 +17,8 @@
           </div>
         </slide>
       </carousel>
-
-
+</div>
 </div>
 </section>
+
 

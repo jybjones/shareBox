@@ -3,7 +3,7 @@
           <div class="page-header">
             <h2> Welcome {{global.user.Profile.firstName}}</h2>
           </div>
-          <p class="lead">Here are some items your neighbors have posted. Click to get more info or see if it's available to borrow.</p>
+          <p class="lead"><h3>Here are some items your neighbors have posted. Click to get more info or see if it's available to borrow.</h3></p>
           <form role="form">
    <!-- ////Search Btn/// -->
     <div class="row">
@@ -19,7 +19,7 @@
 </form>
 <hr>
 
-          <ul class="thumbnails items">
+          <ul class="thumbnailsItems">
             <li class=" thumbnail span3" data-ng-repeat="item in items" >
               <span>{{item.updatedAt | date:'medium'}}</span>
               <span>{{item.userProfile.firstName}}</span>

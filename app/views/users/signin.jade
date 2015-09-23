@@ -2,7 +2,7 @@ extends auth
 
 block auth
   form.signin.input-block-level(action="/users/session", method="post")
-    h2.form-signin-heading.text-center Please sign in
+    h2.form-signin-heading.text-center Please Log In
     .control-group
       label.control-label.input-lg.text-center(for='email') Email
       .controls
@@ -14,14 +14,8 @@ block auth
         &nbsp;&nbsp;
     .form-actions
       button.btn.btn-primary.text-center.form-control(type='submit') Log In&nbsp;
-      label.control-label.input-lg.text-center(for='') Or
-      button.btn.btn-primary.a.show-login(href="/signup") Signin
-      label.control-label.input-lg.text-center(for='') Or
-      a.show-login(href="/signup") Register
+      //- label.control-label.input-lg.text-center(for='') Or
+      //- button.btn.btn-primary.a.show-login(href="/signin") Signin
+      //- label.control-label.input-lg.text-center(for='') Or
+      //- a.show-login(href="/signup") Register
 
-
-
-    //- .form-actions
-    //-   button.btn.btn-primary(type='submit') Log In&nbsp;
-    //-   | &nbsp;or&nbsp;
-    //-   a.show-signup(href="/signup") Register
