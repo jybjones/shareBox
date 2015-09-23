@@ -5,7 +5,6 @@
   </div>
 <section data-ng-controller="ProfileController">
 <form role="form"class='global-form create-name-form' name='createNameForm' ng-submit='updateProfile()' novalidate>
-  <div class="control-group"> <!-- //first name// -->
     <div class="row">
       <div class="col-xs-12">
          <label for="firstName" class="control-label">First Name</label>
@@ -18,7 +17,6 @@
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
 
-    <div class="control-group"> <!-- //last name// -->
     <div class="row">
       <div class="col-xs-12">
          <label for="lastName" class="control-label">Last Name</label>
@@ -31,7 +29,6 @@
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
 
-    <div class="control-group">
     <div class="row">
       <div class="col-xs-12">
          <label for="address1" class="control-label">Address1</label>
@@ -44,7 +41,6 @@
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
 
-    <div class="control-group">
     <div class="row">
       <div class="col-xs-12">
          <label for="address2" class="control-label">Address2</label>
@@ -57,7 +53,6 @@
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
 
-    <div class="control-group">
     <div class="row">
       <div class="col-xs-12">
          <label for="city" class="control-label">City</label>
@@ -70,7 +65,6 @@
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
 
-     <div class="control-group">
     <div class="row">
       <div class="col-xs-12">
          <label for="state" class="control-label">State</label>
@@ -86,7 +80,6 @@
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
 
-    <div class="control-group">
     <div class="row">
       <div class="col-xs-12">
          <label for="postalCode" class="control-label">PostalCode</label>
@@ -99,7 +92,6 @@
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
 
-    <div class="control-group">
     <div class="row">
       <div class="col-xs-12">
       <label for="" class=""></label>
@@ -173,11 +165,11 @@
       <div class="col-sm-8 col-sm-offset-2 text-center">
       <div>
           <h3>Today's Date</h3>
-          <input id="date" class="form-control input-lg text-center" type="date" ng-model="vm.schedule.date">
+          <input id="date" class="form-control input-lg text-center" type="date" ng-model="vm.schedule.date" />
           <span class="result"></span>
       </div>
       <hr>
-
+    </div>
       <hr>
  </form>
 </div>

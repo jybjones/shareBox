@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                     {cwd: 'bower_components/bootstrap/docs/assets/img',                  src: ['*.*'],    dest: 'public/lib/bootstrap/docs/assets/img', expand: true},
                     {cwd: 'bower_components/bootstrap/docs/assets/js',                   src: ['*.*'],    dest: 'public/lib/bootstrap/docs/assets/js', expand: true},
                     {cwd: 'bower_components/jquery',                                     src: ['jquery*'], dest: 'public/lib/jquery', expand: true},
-
+                    {cwd: 'bower_components/ng-file-upload',                                     src: ['*.js'], dest: 'public/lib/ng-file-upload', expand: true}
                 ]
             }
         },

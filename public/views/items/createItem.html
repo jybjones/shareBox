@@ -27,6 +27,23 @@
         <textarea data-ng-model="newItem.description" id="description" cols="30" rows="10" placeholder="Content">
         </textarea>
       </div>
+      <!--<button ngf-select="uploadFiles($files)" multiple ngf-multiple="true" accept="image/*" ngf-max-height="1000" ngf-max-size="5MB">-->
+          <!--Select Files</button>-->
+      <div class="up-buttons">
+          <div ngf-select="uploadFiles($files)" ngf-drop="uploadFiles($files)" ng-model="files" ngf-multiple="true" multiple="multiple" ngf-keep="true" ngf-keep-distinct="true" ngf-pattern="uploadPattern" accept="{{uploadAccept}}" ngf-capture="capture" ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box" ngf-drop-available="dropAvailable">Select File,
+              <span ng-show="dropAvailable">Drop File or Paste Image</span>
+          </div>
+          <br>
+      </div>
+      <ul>
+          <li ng-repeat="f in files" style="font-size:smaller;">{{f.name}} {{f.$error}} {{f.$errorParam}}
+      <img ng-src="{{ f.result.url }}" />
+      <span class="progress" ng-show="f.progress >= 0 && f.progress < 100">
+        <div style="width:{{f.progress}}%"
+             ng-bind="f.progress + '%'"></div>
+      </span>
+          </li>
+      </ul>
     </div>
 
        <div class="form-actions input-group-btn">

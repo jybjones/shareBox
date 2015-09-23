@@ -28,6 +28,42 @@
 				</textarea>
 			</div>
 		</div>
+        <div class="control-group">
+            <label for="category" class="control-label">Category</label>
+            <div class="controls">
+                <select id="category" name="categoryId" data-ng-model="item.categoryId"
+                        data-ng-options="category.id as category.name for category in categories" class='form-control'>
+                    <option value="">-- choose category --</option>
+                </select>
+            </div><!-- /input-group -->
+        </div><!-- /.row -->
+        <div class="control-group">
+            <label for="condition" class="control-label">Condition</label>
+            <div class="controls">
+                <select id="condition" name="conditionId" data-ng-model="item.conditionId"
+                        data-ng-options="condition.id as condition.name for condition in conditions" class='form-control'>
+                    <option value="">-- choose condition --</option>
+                </select>
+            </div><!-- /input-group -->
+        </div><!-- /.row -->
+
+        <div class="up-buttons">
+            <div ngf-select="uploadFiles($files)" ngf-drop="uploadFiles($files)" ng-model="files" ngf-multiple="true" multiple="multiple" ngf-keep="true" ngf-keep-distinct="true" ngf-pattern="uploadPattern" accept="{{uploadAccept}}" ngf-capture="capture" ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box" ngf-drop-available="dropAvailable">Select File,
+                <span ng-show="dropAvailable">Drop File or Paste Image</span>
+            </div>
+            <br>
+        </div>
+        <ul>
+            <li ng-repeat="f in item.images" style="font-size:smaller;">
+                <img ng-src="{{ f.url }}" /><div ng-click="removeImage(f.id)">Delete</div>
+            </li>
+            <li ng-repeat="f in files" style="font-size:smaller;">{{f.name}} {{f.$error}} {{f.$errorParam}}
+                <img ng-src="{{ f.result.url }}" /><div ng-click="removeUpload(f.$$hashKey, files)">Delete</div>
+                <span class="progress" ng-show="f.progress >= 0 && f.progress < 100">
+                    <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+                </span>
+            </li>
+        </ul>l
 		<div class="control-group">
 			<div class="controls">
 				<!-- <input type="submit" class="btn btn-primary"> -->

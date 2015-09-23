@@ -14,7 +14,11 @@
         <a class="btn" href="/#!/items/{{item.id}}"> Borrow
           <!-- <i class="icon-edit">Edit</i> -->
         </a>
+    </div>
     <div>{{item.description}}</div>
+    <div data-ng-repeat="image in item.images">
+        <img ng-src="{{ image.url }}" />
+    </div>
 </section>
 
 <!-- FORM -->

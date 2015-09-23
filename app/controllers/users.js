@@ -7,7 +7,7 @@ var db = require('../../config/sequelize');
  * Auth callback
  */
 exports.authCallback = function(req, res, next) {
-    res.redirect('/');
+    res.redirect('/#!/home');
 };
 
 /**
@@ -53,10 +53,17 @@ exports.create = function(req, res) {
 
     var user = db.User.build(req.body);
 
+    if((user.email.length < 3) || (user.password < 3)){
+        res.render('users/signup',{
+            message: "Invalid Email or Password",
+            user: user
+        });
+        return false;
+    }
     user.provider = 'local';
     user.salt = user.makeSalt();
     user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
-    console.log('New User (local) : { id: ' + user.id + ' username: ' + user.username + ' }');
+    console.log('New User (local) : { id: ' + user.id + ' username: ' + user.email + ' }');
 
     user.save().then(function(newUser){
         db.userProfile.create({UserId: newUser.id}).then(function(newProfile){console.log(newProfile.id);});

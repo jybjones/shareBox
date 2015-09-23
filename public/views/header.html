@@ -66,7 +66,7 @@
     <ul class="nav pull-right" data-ng-show="global.authenticated">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				{{global.user.Profile.firstName ? global.user.Profile.firstName : global.user.email}} <b class="caret"></b>
+				{{global.user.Profile.firstName ? global.user.Profile.firstName : (global.user.username ? global.user.username : global.user.email)}} <b class="caret"></b>
 			</a>
             <ul class="dropdown-menu">
                 <li><a ng-click = href="/#!/profile">Profile</a>

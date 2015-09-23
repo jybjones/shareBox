@@ -62,6 +62,7 @@ passport.use(new TwitterStrategy({
                     provider: 'twitter'
                 }).then(function(u){
                     winston.info('New User (twitter) : { id: ' + u.id + ', username: ' + u.username + ' }');
+                    db.userProfile.create({UserId: u.id}).then(function(newProfile){console.log(newProfile.id);});
                     done(null, u);
                 });
             } else {
@@ -84,7 +85,6 @@ passport.use(new FacebookStrategy({
         profileFields: ['email', 'displayName', 'photos']
     },
     function(accessToken, refreshToken, profile, done) {
-      console.log(profile);
         db.User.find({where : {facebookUserId: profile.id}}).then(function(user){
             if(!user){
                 db.User.create({
@@ -95,6 +95,7 @@ passport.use(new FacebookStrategy({
                     facebookUserId: profile.id
                 }).then(function(u){
                     winston.info('New User (facebook) : { id: ' + u.id + ', username: ' + u.username + ' }');
+                    db.userProfile.create({UserId: u.id}).then(function(newProfile){console.log(newProfile.id);});
                     done(null, u);
                 })
             } else {

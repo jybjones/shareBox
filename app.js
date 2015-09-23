@@ -3,6 +3,9 @@
  */
 var express     = require('express');
 var fs          = require('fs');
+// Requires multiparty
+var multiparty = require('connect-multiparty'),
+    multipartyMiddleware = multiparty();
 
 /**
  * Main application entry file.
@@ -16,6 +19,7 @@ var config          = require('./config/config');
 var db              = require('./config/sequelize');
 var passport        = require('./config/passport');
 var winston         = require('./config/winston');
+var cloudinary      = require('./config/cloudinary');
 
 var app = express();
 

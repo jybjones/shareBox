@@ -26,7 +26,7 @@ try {
     }
 }
 catch (e) {
-    // ...
+    // If No Secrets file, do nothing
 }
 
 module.exports = configFile;

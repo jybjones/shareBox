@@ -20,7 +20,10 @@ angular.module('sharebox.items').factory("Items", ['$http', function($http) {
     };
     itemsFactory.deleteItem = function(itemId){
         return $http.delete(urlBase+"/"+itemId);
-    }
+    };
+    itemsFactory.deleteImage = function(imageId){
+        return $http.delete(urlBase+"/photo/"+imageId);
+    };
 
     return itemsFactory;
 }]);

@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		{
 			associate: function(models){
-				//category.belongsTo(models.userProfile);
 			}
 		}
 	);

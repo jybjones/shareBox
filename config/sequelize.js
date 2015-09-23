@@ -72,7 +72,8 @@ sequelize
     }).catch(function(err){
         winston.error("An error occured: %j",err);
     });
- 
+
+Sequelize.STRING.prototype.validate = function() { return true; };
 // assign the sequelize variables to the db object and returning the db. 
 module.exports = _.extend({
   sequelize: sequelize,

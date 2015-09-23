@@ -13,7 +13,6 @@ app.route('/api/lookup/states')
     .get(lookup.allStates);
 app.route('/api/lookup/categories')
     .get(lookup.allCategories);
-//app.route('/api/lookup/conditions')
-//    .get(lookup.allConditions);
-
+app.route('/api/lookup/conditions')
+    .get(lookup.allConditions);
 };

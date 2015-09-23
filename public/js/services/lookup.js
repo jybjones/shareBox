@@ -15,8 +15,12 @@ angular.module('sharebox.profile').factory("Lookup", ['$http', function($http) {
         return $http.get(urlBase+"/states");
     };
 
-    profileFactory.updateProfile = function(profile){
-        return $http.put(urlBase, profile);
+    profileFactory.getCategories = function(){
+        return $http.get(urlBase+"/categories");
+    };
+
+    profileFactory.getConditions = function(){
+        return $http.get(urlBase+"/conditions");
     };
 
     return profileFactory;

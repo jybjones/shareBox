@@ -5,3 +5,25 @@ h1 {
 ul.articles li:not(:last-child) {
     border-bottom:1px solid #ccc
 }
+
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 170px;
+    height: 170px;
+    text-align: center;
+    padding: 100px 10px 0 10px;
+    margin-left: 10px;
+}
+
+.up-buttons {
+    float: right;
+}
+
+.drop-box.dragover {
+    border: 5px dashed blue;
+}
+
+.drop-box.dragover-err {
+    border: 5px dashed red;
+}

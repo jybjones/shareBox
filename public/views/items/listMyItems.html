@@ -9,7 +9,7 @@
     <!-- <li data-ng-repeat="item in myItems"> -->
           <span>{{item.updatedAt | date:'medium'}}</span>
           <span>{{item.userProfile.firstName}}</span>
-          <img src="assets/img/examples/bootstrap-example-starter.png" alt="">
+          <img ng-src="{{ item.images[0].url }}" alt="">
         <h4><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h4>
           {{item.description}}
         </li>
