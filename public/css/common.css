@@ -1,3 +1,66 @@
+
+.signin {
+    /*max-width: 600px;
+    height: auto;*/
+    margin: 10px auto;
+    padding: 10px;
+    /* max-height: 200px; */
+    /* border: 7px solid; */
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 20px 0 #000000;
+  }
+
+  .panel {
+    background-color: pink;
+   /* max-height:200px;*/
+  }
+
+  /*///image Uploads///*/
+.up-buttons{
+  text-align: center;
+  font-weight: bold;
+  color:red;
+}
+
+.drop-box{
+  margin-right:25px;
+}
+.imgRemove {
+  background-color: pink;
+}
+
+/*.main > div {
+  display: inline-block;
+  width: 80%;
+  margin-top: 10px;
+}*/
+
+label {
+      display: inline-block;
+      width: 25%;
+      text-align: center;
+      margin: 10px
+  }
+
+.sep {
+      border: 1px solid ;
+      position: relative;
+      margin: 35px 20px;
+  }
+
+.or {
+      position: absolute;
+      width: 50px;
+      left: 50%;
+      /*background: $back-color;*/
+      text-align: center;
+      margin: -10px 0 0 -25px;
+      line-height: 20px;
+  }
+
+
+
 div.navbar-collapse.collapse {
       display: block;
       overflow: hidden;
@@ -17,7 +80,25 @@ div.navbar-collapse.collapse.in {
     /* margin-bottom: 10px; */
     text-align: center;
     padding: 15px;
+    /*max-height:320px;
+    max-width: 320px;*/
+    /*display: inline-block;*/
 }
+
+.thumbnail {
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+    box-shadow: 0 0 20px 0 #000000;
+}
+
+
 
 html, body {
   background-color: #FF9324;

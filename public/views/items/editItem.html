@@ -1,11 +1,12 @@
+<section data-ng-controller="ItemsController" data-ng-init="findOne()">
 <section id="items">
 <div class="page-header">
 <h2> Welcome {{global.user.Profile.firstName}}</h2>
   </div>
-  <p class="lead"><h3> Edit Item To Add </h3></p>
+  <p class="lead"><h3> Edit Item </h3></p>
 
-<section data-ng-controller="ItemsController" data-ng-init="findOne()">
-	<form fole ="form" class="form-horizontal" data-ng-submit="update()">
+<section data-ng-controller="ItemsController" data-ng-init="findOne()" class="signin container-fluid">
+	<form role ="form" class="form-horizontal" data-ng-submit="update()">
 		<div class="control-group">
       <div class="row">
         <div class="col-xs-12">
@@ -18,26 +19,24 @@
         </div><!-- /input-group -->
       </div><!-- /.col-xs-12 -->
     </div><!-- /.row -->
-			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="description">Content</label>
 
-			<div class="controls">
-				<textarea data-ng-model="item.description" id="description" cols="30" rows="10" placeholder="Content">
-				</textarea>
-			</div>
-		</div>
-        <div class="control-group">
-            <label for="category" class="control-label">Category</label>
+    <div class="row">
+        <div class="col-sm-4 col-xs-6">
+          <div class="control-group">
+             <label for="category" class="control-label">Category</label>
             <div class="controls">
                 <select id="category" name="categoryId" data-ng-model="item.categoryId"
                         data-ng-options="category.id as category.name for category in categories" class='form-control'>
                     <option value="">-- choose category --</option>
                 </select>
-            </div><!-- /input-group -->
-        </div><!-- /.row -->
-        <div class="control-group">
+            </div>
+        </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-6">
+          <div class="control-group">
+            <div class="control-group">
             <label for="condition" class="control-label">Condition</label>
             <div class="controls">
                 <select id="condition" name="conditionId" data-ng-model="item.conditionId"
@@ -45,9 +44,24 @@
                     <option value="">-- choose condition --</option>
                 </select>
             </div><!-- /input-group -->
-        </div><!-- /.row -->
-
-        <div class="up-buttons">
+        </div>
+        </div>
+        </div>
+      </div> <!-- //end ROW -->
+    <div class="row">
+      <div class="col-sm-4 col-xs-6">
+			<div class="control-group">
+      <label class="control-labe" for "description">Content</label>
+      <div class="controls">
+				<textarea class="form-control" data-ng-model="item.description" id="description" cols="30" rows="10" placeholder="Content">
+				</textarea>
+			</div>
+		</div>
+    </div>
+    <!-- /////BEGIN IMAGE AREA///// -->
+    <div class="row">
+    <div class="col-sm-4 col-xs-6">
+    <div class="up-buttons">
             <div ngf-select="uploadFiles($files)" ngf-drop="uploadFiles($files)" ng-model="files" ngf-multiple="true" multiple="multiple" ngf-keep="true" ngf-keep-distinct="true" ngf-pattern="uploadPattern" accept="{{uploadAccept}}" ngf-capture="capture" ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box" ngf-drop-available="dropAvailable">Select File,
                 <span ng-show="dropAvailable">Drop File or Paste Image</span>
             </div>
@@ -55,15 +69,23 @@
         </div>
         <ul>
             <li ng-repeat="f in item.images" style="font-size:smaller;">
-                <img ng-src="{{ f.url }}" /><div ng-click="removeImage(f.id)">Delete</div>
+                <!-- <img ng-src="{{ f.url }}" /><div ng-click="removeImage(f.id)">Delete</div> -->
+                <img ng-src="{{ f.url }}" /><button class="btn btn-primary" type="button"  ng-click="removeImage(f.id)">Delete Image?</button>
+
+
             </li>
             <li ng-repeat="f in files" style="font-size:smaller;">{{f.name}} {{f.$error}} {{f.$errorParam}}
-                <img ng-src="{{ f.result.url }}" /><div ng-click="removeUpload(f.$$hashKey, files)">Delete</div>
+                <!-- <img ng-src="{{ f.result.url }}" /><div ng-click="removeUpload(f.$$hashKey, files)">Delete</div> -->
+                <img ng-src="{{ f.result.url }}" /><button class="btn btn-primary" type="button"  ng-click="removeImage(f.id)">Delete Image?</button>
+
                 <span class="progress" ng-show="f.progress >= 0 && f.progress < 100">
                     <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
                 </span>
             </li>
-        </ul>l
+        </ul>
+   </div> <!-- //end Row Text Block -->
+   </div>
+
 		<div class="control-group">
 			<div class="controls">
 				<!-- <input type="submit" class="btn btn-primary"> -->
@@ -72,3 +94,6 @@
 		</div>
 	</form>
 </section>
+</div>
+
+
