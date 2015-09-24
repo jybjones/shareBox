@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
 			state:     DataTypes.STRING
 		},
 		{
+            timestamps: false,
 			associate: function(models){
 			}
 		}

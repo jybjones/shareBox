@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 				item.belongsTo(models.category);
                 item.belongsTo(models.condition);
                 item.hasMany(models.image);
+                item.hasMany(models.request);
 			}
 		}
 	);

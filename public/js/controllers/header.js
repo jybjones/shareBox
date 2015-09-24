@@ -19,7 +19,14 @@ angular.module('sharebox.system').controller('HeaderController', ['$scope', 'Glo
     {
         "title": "View My Items",
         "link": "items/listMyItems"
+    },{
+        "title": "View Requests",
+        "link": "requests"
     }];
 
     $scope.isCollapsed = false;
+
+    $scope.$on('$routeChangeSuccess', function () {
+        $scope.navCollapsed = true;
+    });
 }]);

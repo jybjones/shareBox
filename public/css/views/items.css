@@ -27,3 +27,9 @@ ul.articles li:not(:last-child) {
 .drop-box.dragover-err {
     border: 5px dashed red;
 }
+
+.itemBooked button span {
+    background-color: orangered;
+    border-radius: 32px;
+    color: black;
+}

@@ -1,10 +1,45 @@
-angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$scope', '$routeParams', '$location', '$timeout', 'Global', 'Items', 'Upload', 'Lookup', function ($rootScope, $scope, $routeParams, $location, $timeout, Global, Items, Upload, Lookup) {
+angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$scope', '$routeParams', '$location', '$timeout', '$q', 'Global', 'Items', 'Upload', 'Lookup', function ($rootScope, $scope, $routeParams, $location, $timeout, $q, Global, Items, Upload, Lookup) {
     $scope.global = Global;
+    $scope.item = {};
+    $scope.itemLoaded = false;
     $scope.files = [];
     $scope.uploadPattern = 'image/*';
     $scope.uploadAccept = 'image/*';
     $scope.capture = 'camera';
     //$scope.dropAvailable = true;
+    var dateDisableDeferred =  $q.defer();
+    $scope.dateDisablePromise = dateDisableDeferred.promise;
+    $scope.emptyRequest = {
+        startDate: null,
+        endDate: null,
+        message: null
+    };
+    $scope.request = JSON.parse(JSON.stringify($scope.emptyRequest));
+    $scope.status = {
+        opened: false
+    };
+    $scope.dateOptions = {
+        formatYear: 'yy'
+    };
+    $scope.minDate = new Date();
+    $scope.TZOffsetString = '';
+
+    $scope.buildTZOffsetString = function(){
+        var pad = '00';
+        var date = new Date();
+        var offset = date.getTimezoneOffset();
+        var offsetString = (offset > 0 ? "-" : "+")+("0"+(offset/60)).slice(-2)+":"+("0"+(offset%60)).slice(-2);
+        $scope.TZOffsetString = offsetString;
+    };
+    $scope.buildTZOffsetString();
+
+    $scope.cleanDate = function(dateString){
+        if(dateString[dateString.length-1] == 'Z'){
+            // Is Zulu time, convert to Browser Timezone.
+            dateString = dateString.slice(0, -1)+$scope.TZOffsetString;
+        }
+        return dateString;
+    };
 
     $scope.loadAll = function() {
         Items.getItems().success(function(items){
@@ -66,6 +101,8 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
         Items.getItem($routeParams.itemId).success(function(item){
             console.log(item);
             $scope.item = item;
+            $scope.itemLoaded = true;
+            dateDisableDeferred.notify(new Date().getTime());
         }).error(function(err){
             // Error State
         });
@@ -149,6 +186,121 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
         });
     };
 
+    $scope.borrowRequest = function(){
+        console.log($scope.newRequest);
+        var doUpdate = false;
+        // Get Start Date @TODO
+        var startDate = $scope.newRequest.startDate;
+        // Get End Date @TODO
+        var endDate = $scope.newRequest.endDate;
+        startDate.setHours(0,0,0,0);
+        endDate.setHours(0,0,0,0);
+        // Validate Both dates Selected @TODO
+        if(startDate != null && endDate != null) {
+            // Validate End Date After Start Date @TODO
+            if(endDate.getTime() >= startDate.getTime()) {
+                // Validate All Dates between Start and End are non-booked @TODO
+                if($scope.item.requests.length == 0){
+                    doUpdate = true;
+                }else {
+                    for (var i = 0; i < $scope.item.requests.length; i++) {
+                        var eventStartDay = new Date($scope.cleanDate($scope.item.requests[i].startDate));
+                        var eventEndDay = new Date($scope.cleanDate($scope.item.requests[i].endDate));
+                        eventStartDay.setHours(0, 0, 0, 0);
+                        eventEndDay.setHours(0, 0, 0, 0);
+
+                        if (startDate.getTime() <= eventStartDay.getTime() && endDate.getTime() >= eventStartDay.getTime()) {
+                            // Bad Overlap
+                            doUpdate = false;
+                        } else if (startDate.getTime <= eventEndDay.getTime() && endDate.getTime() >= eventEndDay.getTime()) {
+                            // Bad Overlap
+                            doUpdate = false;
+                        } else {
+                            doUpdate = true;
+                        }
+                    }
+                }
+            }
+        }else{
+            // Something is not set!
+        }
+
+        if(doUpdate){
+            // Submit Request to Server and update Item Object. @TODO
+            console.log("SUCCESSFULLY BOOKED ITEM");
+            $scope.newRequest.itemId = $scope.item.id;
+            $scope.newRequest.LenderProfileId = $scope.item.userProfileId;
+            console.log($scope.newRequest);
+            var request = $scope.newRequest;
+
+            Items.bookItem(request).success(function(item){
+                // Put redirect to show here.
+                $timeout(function(){
+                    $scope.newRequest = JSON.parse(JSON.stringify($scope.emptyRequest));
+                    console.log(item);
+                    $scope.$broadcast('refreshDatepickers');
+                    $location.path("items"); // /" + item.id);
+                    $rootScope.$apply();
+                }, 50);
+            }).error(function(err){
+                // Error State
+            });
+        }
+    };
+
+    $scope.getDayClass = function(date, mode) {
+        // Return color class for booked dates. @TODO
+        if($scope.item != {}) {
+            if (mode === 'day') {
+                var dayToCheck = new Date(date);
+
+                for (var i = 0; i < $scope.item.requests.length; i++) {
+                    var startDay = new Date($scope.cleanDate($scope.item.requests[i].startDate));
+                    var endDay = new Date($scope.cleanDate($scope.item.requests[i].endDate));
+                    startDay.setHours(0,0,0,0);
+                    endDay.setHours(0,0,0,0);
+
+                    if (dayToCheck.getTime() >= startDay.getTime() && dayToCheck.getTime() <= endDay.getTime()) {
+                        return 'itemBooked';
+                    }
+                }
+            }
+        }
+        return '';
+    };
+
+    $scope.disabled = function(date, mode) {
+        // Return true for booked dates. @TODO
+        if($scope.itemLoaded) {
+            if (mode === 'day') {
+                var dayToCheck = new Date(date);
+                dayToCheck.setHours(0,0,0,0);
+
+                for (var i = 0; i < $scope.item.requests.length; i++) {
+                    var startDay = new Date($scope.cleanDate($scope.item.requests[i].startDate));
+                    var endDay = new Date($scope.cleanDate($scope.item.requests[i].endDate));
+                    startDay.setHours(0,0,0,0);
+                    endDay.setHours(0,0,0,0);
+
+                    if (dayToCheck.getTime() >= startDay.getTime() && dayToCheck.getTime() <= endDay.getTime()) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    };
+
+    $scope.today = function() {
+        $scope.dt = new Date();
+    };
+
+    $scope.open = function($event) {
+        $event.stopPropagation();
+        $scope.status.opened = true;
+    };
+
+    $scope.today();
     $scope.loadCategories();
     $scope.loadConditions();
 }]);

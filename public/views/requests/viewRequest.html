@@ -1,0 +1,25 @@
+<section data-ng-controller="RequestsController" data-ng-init="findRequest()">
+    <span>{{item.updatedAt | date:'medium'}}</span> View My Items
+    <span>{{item.userProfile.firstName}}</span>
+
+    <h2>{{item.name}}</h2>
+    <h3 ng-show="request.approved">Request Has Been Approved!</h3>
+
+    <div>{{item.description}}</div>
+    <div data-ng-repeat="image in item.images">
+        <img ng-src="{{ image.url }}"/>
+    </div>
+    <ul>
+        <li data-ng-repeat="message in request.messages">{{ message.From.firstName }}: {{ message.message }}</li>
+    </ul>
+    <form name='messageForm' ng-submit="sendMessage()">
+        <div class="controls">
+            <textarea data-ng-model="newMessage.message" id="message" cols="30" rows="10" placeholder="Message">
+            </textarea>
+        </div>
+        <input type="submit" value="Send" class="btn btn-primary btn-lg">
+        <a class="btn btn-primary" ng-click="approveRequest()" ng-show="!request.approved"> Approve Request&nbsp;
+            <!-- <i class="icon-edit">Edit</i> -->
+        </a>
+    </form>
+</section>

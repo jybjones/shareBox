@@ -44,6 +44,13 @@ angular.module('sharebox').config(['$routeProvider',
         when('/items', {
             templateUrl: 'views/items/listItems.html' //ALL items
         }).
+//////////Requests View////////
+        when('/requests', {
+            templateUrl: 'views/requests/listRequests.html' ///ALL MY requests
+        }).
+        when('/requests/:requestId', {
+            templateUrl: 'views/requests/viewRequest.html'
+        }).
         otherwise({
             redirectTo: '/'
         });

@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
 			description:     DataTypes.TEXT
 		},
 		{
+            timestamps: false,
 			associate: function(models){
 			}
 		}

@@ -25,6 +25,17 @@ app.route('/api/items/photo')
 app.route('/api/items/photo/:imageId')
     .delete(users.requiresLogin, items.hasImageAuthorization, items.deletePhoto)
 ;
+app.route('/api/items/request')
+    .post(users.requiresLogin, items.requestItem)
+;
+app.route('/api/requests')
+    .get(users.requiresLogin, items.listRequests)
+;
+app.route('/api/requests/:requestId')
+    .get(users.requiresLogin, items.loadRequest)
+    .post(users.requiresLogin, items.postMessage)
+    .put(users.requiresLogin, items.approveRequest)
+;
 app.route('/api/items/:itemId')
     .get(items.show)
     .put(users.requiresLogin, items.hasAuthorization, items.update)
@@ -34,4 +45,5 @@ app.route('/api/items/:itemId')
 // Note: the articles.article function will be called everytime then it will call the next function.
 app.param('itemId', items.item);
 app.param('imageId', items.image);
+app.param('requestId', items.request);
 };

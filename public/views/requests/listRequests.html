@@ -1,0 +1,48 @@
+<section data-ng-controller="RequestsController" data-ng-init="loadAll()">
+    <section id="items">
+        <div class="page-header">
+            <h2> Welcome {{global.user.Profile.firstName}}</h2>
+        </div>
+            <p class="lead"><h3>Here are requests to borrow your items.</h3></p>
+            <hr>
+
+        <ul class="thumbnailsItems">
+            <li class=" thumbnail span3" data-ng-repeat="request in requests.requestsReceived" >
+                <span>{{request.updatedAt | date:'medium'}}</span>
+                <span>{{request.item.userProfile.firstName}}</span>
+
+                <h4><a data-ng-href="#!/requests/{{request.id}}">{{request.item.name}}</a></h4>
+                {{request.item.description}}
+            </li>
+        </ul>
+        <p class="lead"><h3>Here are your requests to borrow items.</h3></p>
+        <hr>
+        <ul class="thumbnailsItems">
+            <li class=" thumbnail span3" data-ng-repeat="request in requests.requestsMade" >
+                <span>{{request.updatedAt | date:'medium'}}</span>
+                <span>{{request.item.userProfile.firstName}}</span>
+
+                <h4><a data-ng-href="#!/requests/{{request.id}}">{{request.item.name}}</a></h4>
+                {{request.item.description}}
+            </li>
+        </ul>
+    </section>
+</section>
+
+
+<!-- __________________________////Originall///__________________________________________ -->
+<!-- <section data-ng-controller="ItemsController" data-ng-init="loadAll()">
+  <h2> Welcome {{global.user.Profile.firstName}}</h2>
+  <ul class="articles unstyled">
+    <li data-ng-repeat="item in items">
+      <span>{{item.updatedAt | date:'medium'}}</span>
+      <span>{{item.userProfile.firstName}}</span>
+      <h2><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h2>
+      <div>{{item.description}}</div>
+    </li>
+  </ul>
+
+  <a class="btn" href="/#!/items"> Borrow Item from Sh@reBox</a>
+  <a class="btn" href="/#!/items/create">Add Item to Sh@reBox</a>
+  <h1 data-ng-hide="!items || items.length">No Items Yet. <br> Why don't you <a href="/#!/items/create">Create One</a>?</h1>
+</section>

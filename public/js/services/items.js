@@ -24,6 +24,8 @@ angular.module('sharebox.items').factory("Items", ['$http', function($http) {
     itemsFactory.deleteImage = function(imageId){
         return $http.delete(urlBase+"/photo/"+imageId);
     };
-
+    itemsFactory.bookItem = function(request){
+        return $http.post(urlBase+"/request", request);
+    };
     return itemsFactory;
 }]);

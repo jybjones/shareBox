@@ -1,10 +1,12 @@
 <section data-ng-controller="ItemsController" data-ng-init="findOne()" class="signin container-fluid">
     <span>{{item.updatedAt | date:'medium'}}</span> View My Items
     <span>{{item.userProfile.firstName}}</span>
+
     <h2>{{item.name}}</h2>
+
     <div data-ng-show="global.user.Profile.id === item.userProfile.id">
         <a class="btn btn-primary" href="/#!/items/{{item.id}}/edit"> Edit&nbsp;&nbsp;&nbsp;
-          <!-- <i class="icon-edit">Edit</i> -->
+            <!-- <i class="icon-edit">Edit</i> -->
         </a>
         <a class="btn btn-primary" data-ng-click="remove();"> Delete
             <!-- <i class="icon-trash">Delete</i> -->
@@ -12,33 +14,63 @@
     </div>
     <div data-ng-show="global.user.Profile.id != item.userProfile.id">
         <a class="btn" href="/#!/items/{{item.id}}"> Borrow
-          <!-- <i class="icon-edit">Edit</i> -->
+            <!-- <i class="icon-edit">Edit</i> -->
         </a>
     </div>
     <div>{{item.description}}</div>
     <div data-ng-repeat="image in item.images">
-        <img ng-src="{{ image.url }}" />
+        <img ng-src="{{ image.url }}"/>
     </div>
-</section>
 
-<!-- FORM -->
-  <form name='scheduleForm' ng-submit="vm.submit()" novalidate>
-    <div id="information-form" class="row">
-      <div class="col-sm-8 col-sm-offset-2 text-center">
-      <div>
-          <h3>Calendar</h3>
-          <input id="date" class="form-control input-lg text-center" type="date" ng-model="vm.schedule.date">
-          <span class="result"></span>
-      </div>
-      <hr>
-      <!-- <div>
-          <h3>Time</h3>
-          <input id="time" class="form-control input-lg text-center" type="time" ng-model="vm.schedule.time">
-          <span class="result"></span>
-      </div>
-      <hr>
-        <input type="submit" value="Add" class="btn btn-primary btn-lg">
+    <!-- FORM -->
+    <h3>Calendar</h3>
+    <div style="display:inline-block; min-height:290px;">
+        <datepicker ng-show="itemLoaded" ng-model="dt" show-weeks="false" class="well well-sm" date-disabled="disabled(date, mode)"
+                    custom-class="getDayClass(date, mode)" jm-dp-refresh-view="dateDisablePromise"></datepicker>
     </div>
-  </div>
- </form>
-</div> -->
+    <form name='scheduleForm' ng-submit="borrowRequest()">
+        <div id="information-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="mediumDate"
+                                       ng-model="newRequest.startDate" ng-click="open($event, 'start')"
+                                       is-open="status.opened" show-weeks="false" min-date="minDate"
+                                       datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                       custom-class="getDayClass(date, mode)" ng-required="true" close-text="Close"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event, 'start')">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <p class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="mediumDate"
+                                       ng-model="newRequest.endDate" ng-click="open($event, 'end')"
+                                       is-open="status.opened" show-weeks="false" min-date="minDate"
+                                       datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                       custom-class="getDayClass(date, mode)" ng-required="true" close-text="Close"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event, 'end')">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <textarea data-ng-model="newRequest.message" id="message" cols="30" rows="10" placeholder="Message">
+                    </textarea>
+                </div>
+                <hr>
+                <input type="submit" value="Borrow" class="btn btn-primary btn-lg">
+            </div>
+        </div>
+    </form>
+</section>
