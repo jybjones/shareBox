@@ -6,13 +6,13 @@
       <ul class="thumbnails items">
         <li class=" thumbnail span3" data-ng-repeat="item in myItems">
     <!-- <li data-ng-repeat="item in myItems"> -->
-          <span>{{item.updatedAt | date:'medium'}}</span>
+        <div class="updateText"  <span>{{item.updatedAt | date:'medium'}}</span>
           <span>{{item.userProfile.firstName}}</span>
           <img ng-src="{{ item.images[0].url }}" alt="">
-        <h4><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h4>
-          {{item.description}}
+       <div class="updateText"> <h2>Title Post: <a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h2> </div>
+          Description: {{item.description}}
         </li>
-       </ul>
+       </ul> </div>
 
   <h1 data-ng-hide="!myItems || myItems.length">You Currently Don't Have Any Items Posted... <br> Why don't you <a href="/#!/items/create">Create One</a>?</h1>
 </section>

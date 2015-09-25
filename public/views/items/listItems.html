@@ -21,14 +21,16 @@
         <div id="map" ng-init="drawMap()" class="signin"></div>
           <ul class="thumbnailsItems">
             <li class=" thumbnail span3" data-ng-repeat="item in items" >
+            <div class="updateText">
                 <span>{{item.updatedAt | date:'medium'}}</span>
                 <span>{{item.userProfile.firstName}}</span>
 
                 <img ng-src="{{ item.images[0].url }}">
-                <h4><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h4>
-                {{item.description}}
+                <h2><a data-ng-href="#!/items/{{item.id}}">{{item.name}}</a></h2>
+                {{item.description}} </div>
             </li>
         </ul>
+
     </section>
 </section>
 

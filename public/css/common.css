@@ -1,7 +1,12 @@
+.updateText {
+  font-size: bolder;
+    color:#FF9324;
+  font-size: 1.75em;
+}
 
 .signin {
-    /*max-width: 600px;
-    height: auto;*/
+    max-width: 100%;
+    /*height: auto;*/
     margin: 10px auto;
     padding: 10px;
     /* max-height: 200px; */
@@ -156,18 +161,6 @@ a:hover, .btn.btn-primary:hover {
     /* opacity: .5; */
  }
 
-
-.footer-row {
-  height:10px;
-}
-footer {background: #000;}
-.soc-media-ul {
-  display: flex;
-}
-.soc-media-ul img{
-  width: 75%;
-  height: 75%;
-}
 ul{
   text-decoration: none;
 }

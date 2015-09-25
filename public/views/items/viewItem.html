@@ -1,8 +1,9 @@
 <section data-ng-controller="ItemsController" data-ng-init="findOne()" class="signin container-fluid">
-    <span>{{item.updatedAt | date:'medium'}}</span> View My Items
+    <div class="updateText"><span>{{item.updatedAt | date:'medium'}}</span> View My Items
     <span>{{item.userProfile.firstName}}</span>
 
     <h2>{{item.name}}</h2>
+    </div> <!-- //End updateTexxt/ -->
 
     <div data-ng-show="global.user.Profile.id === item.userProfile.id">
         <a class="btn btn-primary" href="/#!/items/{{item.id}}/edit"> Edit&nbsp;&nbsp;&nbsp;
@@ -12,7 +13,7 @@
             <!-- <i class="icon-trash">Delete</i> -->
         </a>
     </div>
-    <div>{{item.description}}</div>
+    <div class="updateText">Item Description: {{item.description}}</div>
     <div data-ng-repeat="image in item.images">
         <img ng-src="{{ image.url }}"/>
     </div>
