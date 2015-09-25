@@ -156,12 +156,13 @@ a:hover, .btn.btn-primary:hover {
     /* opacity: .5; */
  }
 
+
+.footer-row {
+  height:10px;
+}
 footer {background: #000;}
 .soc-media-ul {
   display: flex;
-  justify-content: center;
-   -webkit-transition: 1s;
-          transition: 1s;
 }
 .soc-media-ul img{
   width: 75%;
@@ -172,8 +173,8 @@ ul{
 }
 li {list-style-type: none;}
 
-.soc-media-ul a {
+/*.soc-media-ul a {
   text-align: center;
   text-decoration: none;
 
-}
+}*/
