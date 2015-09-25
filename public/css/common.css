@@ -11,11 +11,6 @@
     box-shadow: 0 0 20px 0 #000000;
   }
 
-  .panel {
-    background-color: pink;
-   /* max-height:200px;*/
-  }
-
   /*///image Uploads///*/
 .up-buttons{
   text-align: center;
@@ -43,38 +38,24 @@ label {
       margin: 10px
   }
 
-.sep {
-      border: 1px solid ;
-      position: relative;
-      margin: 35px 20px;
-  }
+.navbar-default{
+    background-color: #f8f8f8;
+    font-size: larger;
+    color:#FF9324;
+    background-color: #ECF3F2;
+    text-shadow: .3px .3px 0px #000;
+    border-color: transparent;
+}
+.navbar-nav>.active>a, .navbar-nav>.active>a:focus,  .navbar-nav>.active>a:hover {
+    color:#FF9324;
+    background-color: #FF9324;
+    text-shadow: .3px .3px 0px #000;
 
-.or {
-      position: absolute;
-      width: 50px;
-      left: 50%;
-      /*background: $back-color;*/
-      text-align: center;
-      margin: -10px 0 0 -25px;
-      line-height: 20px;
-  }
+}
 
-
-
-div.navbar-collapse.collapse {
-      display: block;
-      overflow: hidden;
-      max-height: 0px;
-      -webkit-transition: max-height .3s ease;
-      -moz-transition: max-height .3s ease;
-      -o-transition: max-height .3s ease;
-      transition: max-height .3s ease;
-    }
-
-div.navbar-collapse.collapse.in {
+.navbar-collapse.collapse.in {
       max-height: 2000px;
     }
-
 .thumbnailsItems {
     margin-top: 0;
     /* margin-bottom: 10px; */
@@ -107,7 +88,50 @@ html, body {
 .content{
   background-color:#FF9324;
 }
-.carousel-control.left {
+.container{
+  padding-top:50px;
+  text-align: center;
+  height:100%;
+
+}
+
+a:hover, .btn.btn-primary:hover {
+  text-shadow: .5px .5px 1px #black;
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: 1s;
+          transition: 1s; }
+
+
+/*//////Carousel/////*/
+.container-carousel {
+    width: 95%;
+    margin: 30px auto;
+    padding: 50px;
+    min-height: 400px;
+    height: auto;
+    background-color: #FFF;
+}
+.landingCarousel {
+  width: 100%;
+  display: block;
+      -moz-box-shadow: 0px 5px 20px #ccc;
+     -webkit-box-shadow: 0px 5px 20px #CCC;
+     box-shadow: 0px 5px 20px #CCC;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0px);
+    background-color: rgb(229, 227, 223);
+    z-index: 1;
+    width: 100%;
+    /*transform-origin: 399px 4px 0px;
+    transform: matrix(1, 0, 0, 1, 0, 0);*/
+/*.carousel-caption {
+  color: black;
+ }*/
+ }
+ .carousel-control.left {
  background-image: none;
  background-image: none;
  background-repeat: repeat-x;
@@ -131,47 +155,25 @@ html, body {
     text-shadow: 0 1px 2px rgba(0,0,0,.6);
     /* opacity: .5; */
  }
- .carousel-caption {
-  color: black;
- }
 
-a:hover, .btn.btn-primary:hover {
-  text-shadow: 1px 1px 2px #black;
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
-  -webkit-transition: 1s;
-          transition: 1s; }
+footer {background: #000;}
+.soc-media-ul {
+  display: flex;
+  justify-content: center;
+   -webkit-transition: 1s;
+          transition: 1s;
+}
+.soc-media-ul img{
+  width: 75%;
+  height: 75%;
+}
+ul{
+  text-decoration: none;
+}
+li {list-style-type: none;}
 
-.container{
-  padding-top:50px;
+.soc-media-ul a {
   text-align: center;
-  height:100%;
+  text-decoration: none;
 
 }
-
-.container-carousel {
-    width: 95%;
-    margin: 30px auto;
-    padding: 50px;
-    min-height: 400px;
-    height: auto;
-    background-color: #FFF;
-}
-.landingCarousel {
-  width: 100%;
-  display: block;
-      -moz-box-shadow: 0px 5px 20px #ccc;
-     -webkit-box-shadow: 0px 5px 20px #CCC;
-     box-shadow: 0px 5px 20px #CCC;
-    position: relative;
-    overflow: hidden;
-    transform: translateZ(0px);
-    background-color: rgb(229, 227, 223);
-    z-index: 1;
-    width: 100%;
-    /*transform-origin: 399px 4px 0px;
-    transform: matrix(1, 0, 0, 1, 0, 0);*/
-
-}
-

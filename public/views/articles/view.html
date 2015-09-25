@@ -1,14 +1,15 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+<section data-ng-controller="ArticlesController" data-ng-init="findOne()" class="signin container-fluid">
+
     <span>{{article.updatedAt | date:'medium'}}</span>/
     <span>{{article.user.name}}</span>
     <h2>{{article.title}}</h2>
     <div data-ng-show="global.user.id == article.user.id">
-        <a class="btn" href="/#!/articles/{{article.id}}/edit">
-        	<i class="icon-edit"></i>
-        </a> 
-        <a class="btn" data-ng-click="remove();">
-            <i class="icon-trash"></i>
+        <a class="btn btn-primary" href="/#!/articles/{{article.id}}/edit">Edit </a>
+
+        <a class="btn btn-primary" data-ng-click="remove();"> Delete
         </a>
     </div>
     <div>{{article.content}}</div>
+  </div>
+
 </section>

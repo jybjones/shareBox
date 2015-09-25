@@ -3,7 +3,7 @@
         <div class="page-header">
             <h2> Welcome {{global.user.Profile.firstName}}</h2>
         </div>
-            <p class="lead"><h3>Here are requests to borrow your items.</h3></p>
+            <p class="lead"><h3>Here Are Requests FROM Users To Borrow Your Items.</h3></p>
             <hr>
 
         <ul class="thumbnailsItems">
@@ -15,7 +15,7 @@
                 {{request.item.description}}
             </li>
         </ul>
-        <p class="lead"><h3>Here are your requests to borrow items.</h3></p>
+        <p class="lead"><h3>Here Are YOUR Requests To Borrow Items.</h3></p>
         <hr>
         <ul class="thumbnailsItems">
             <li class=" thumbnail span3" data-ng-repeat="request in requests.requestsMade" >

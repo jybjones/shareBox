@@ -23,7 +23,8 @@
     </div>
 
     <!-- FORM -->
-    <h3>Calendar</h3>
+    <div data-ng-hide="global.user.Profile.id === item.userProfile.id">
+    <h3>Check The Calendar For Available Dates</h3>
     <div style="display:inline-block; min-height:290px;">
         <datepicker ng-show="itemLoaded" ng-model="dt" show-weeks="false" class="well well-sm" date-disabled="disabled(date, mode)"
                     custom-class="getDayClass(date, mode)" jm-dp-refresh-view="dateDisablePromise"></datepicker>
@@ -41,8 +42,8 @@
                                        datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
                                        custom-class="getDayClass(date, mode)" ng-required="true" close-text="Close"/>
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="open($event, 'start')">
-                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    <button type="button" class="btn btn-primary" ng-click="open($event, 'start')">
+                                        <i class="glyphicon glyphicon-calendar">Start Date</i>
                                     </button>
                                 </span>
                             </p>
@@ -56,8 +57,8 @@
                                        datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
                                        custom-class="getDayClass(date, mode)" ng-required="true" close-text="Close"/>
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="open($event, 'end')">
-                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    <button type="button" class="btn btn-primary" ng-click="open($event, 'end')">
+                                        <i class="glyphicon glyphicon-calendar">End Date</i>
                                     </button>
                                 </span>
                             </p>
@@ -69,8 +70,9 @@
                     </textarea>
                 </div>
                 <hr>
-                <input type="submit" value="Borrow" class="btn btn-primary btn-lg">
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg">
             </div>
         </div>
     </form>
+    </div>
 </section>

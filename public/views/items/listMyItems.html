@@ -3,7 +3,6 @@
     <div class="page-header">
             <h2> Welcome {{global.user.Profile.firstName}}</h2>
           </div>
-    <p class="lead">List of My Items I'm Lending OR STORED/ AVAIL for OTHERS to BORROW!</p>
       <ul class="thumbnails items">
         <li class=" thumbnail span3" data-ng-repeat="item in myItems">
     <!-- <li data-ng-repeat="item in myItems"> -->
@@ -15,5 +14,5 @@
         </li>
        </ul>
 
-  <h1 data-ng-hide="!myItems || myItems.length">No Items yet. <br> Why don't you <a href="/#!/items/create">Create One</a>?</h1>
+  <h1 data-ng-hide="!myItems || myItems.length">You Currently Don't Have Any Items Posted... <br> Why don't you <a href="/#!/items/create">Create One</a>?</h1>
 </section>

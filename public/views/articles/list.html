@@ -1,11 +1,19 @@
 <section data-ng-controller="ArticlesController" data-ng-init="find()">
-	<ul class="articles unstyled">
-		<li data-ng-repeat="article in articles">
+<section id="articles">
+        <div class="page-header">
+            <h2> Welcome {{global.user.Profile.firstName}}</h2>
+        </div>
+          <p class="lead"><h3>Here are some local articles your neighbors have posted recently. Click for more information.</h3></p>
+          <form role="form"></form>
+
+	<ul class="thumbnailsItems">
+		<li class="thumbnail span3" data-ng-repeat="article in articles">
 			<span>{{article.updatedAt | date:'medium'}}</span> /
 			<span>{{article.user.name}}</span>
 			<h2><a data-ng-href="#!/articles/{{article.id}}">{{article.title}}</a></h2>
 			<div>{{article.content}}</div>
 		</li>
 	</ul>
+  </section>
 	<h1 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/#!/articles/create">Create One</a>?</h1>
 </section>
