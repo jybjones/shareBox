@@ -112,7 +112,7 @@ html, body {
   background-color:#FF9324;
 }
 .container{
-  padding-top:50px;
+  /*padding-top:50px;*/
   text-align: center;
   height:100%;
 
@@ -133,7 +133,7 @@ a:hover, .btn.btn-primary:hover {
     margin: 30px auto;
     padding: 50px;
     min-height: 400px;
-    height: auto;
+    /*height: auto;*/
     background-color: #FFF;
 }
 .landingCarousel {
