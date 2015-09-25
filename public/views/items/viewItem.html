@@ -1,8 +1,8 @@
-<section data-ng-controller="ItemsController" data-ng-init="findOne()" class="signin container-fluid">
-    <div class="updateText"><span>{{item.updatedAt | date:'medium'}}</span> View My Items
+<section data-ng-controller="ItemsController" data-ng-init="findOne()" class="itemForms container-fluid">
+    <div class="updateText"><span>{{item.updatedAt | date:'medium'}}</span> User:
     <span>{{item.userProfile.firstName}}</span>
 
-    <h2>{{item.name}}</h2>
+    <h2>Title: {{item.name}}</h2>
     </div> <!-- //End updateTexxt/ -->
 
     <div data-ng-show="global.user.Profile.id === item.userProfile.id">
@@ -19,7 +19,7 @@
     </div>
 
     <!-- FORM -->
-    <div data-ng-hide="global.user.Profile.id === item.userProfile.id">
+    <div class="container-fluid" data-ng-hide="global.user.Profile.id === item.userProfile.id">
     <h3>Check The Calendar For Available Dates</h3>
     <div style="display:inline-block; min-height:290px;">
         <datepicker ng-show="itemLoaded" ng-model="dt" show-weeks="false" class="well well-sm" date-disabled="disabled(date, mode)"
