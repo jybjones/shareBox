@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 			associate: function(models){
 				userProfile.belongsTo(models.User); //hierarchy of connections
         		userProfile.belongsTo(models.state); //state belongs to userProfile
+                userProfile.belongsTo(models.pod);
         		userProfile.hasMany(models.item);
 			}
 		}

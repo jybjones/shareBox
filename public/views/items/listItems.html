@@ -18,7 +18,7 @@
     <!-- </div> --><!-- /.row -->
 </form>
 <hr>
-
+        <div id="map" ng-init="drawMap()" class="signin"></div>
           <ul class="thumbnailsItems">
             <li class=" thumbnail span3" data-ng-repeat="item in items" >
                 <span>{{item.updatedAt | date:'medium'}}</span>
@@ -31,7 +31,6 @@
         </ul>
     </section>
 </section>
-
 
 <!-- __________________________////Originall///__________________________________________ -->
 <!-- <section data-ng-controller="ItemsController" data-ng-init="loadAll()">

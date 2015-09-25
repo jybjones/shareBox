@@ -33,3 +33,10 @@ ul.articles li:not(:last-child) {
     border-radius: 32px;
     color: black;
 }
+
+#map {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-height: 300px;
+}

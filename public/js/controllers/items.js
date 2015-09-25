@@ -1,5 +1,6 @@
 angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$scope', '$routeParams', '$location', '$timeout', '$q', 'Global', 'Items', 'Upload', 'Lookup', function ($rootScope, $scope, $routeParams, $location, $timeout, $q, Global, Items, Upload, Lookup) {
     $scope.global = Global;
+    $scope.map = null;
     $scope.item = {};
     $scope.itemLoaded = false;
     $scope.files = [];
@@ -67,6 +68,7 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
 
     $scope.create = function() {
         var item = $scope.newItem;
+        item.podId = $scope.global.user.Profile.podId;
         item.images = [];
         angular.forEach($scope.files, function(file){
             item.images.push(file.result);
@@ -189,17 +191,17 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
     $scope.borrowRequest = function(){
         console.log($scope.newRequest);
         var doUpdate = false;
-        // Get Start Date @TODO
+        // Get Start Date
         var startDate = $scope.newRequest.startDate;
-        // Get End Date @TODO
+        // Get End Date
         var endDate = $scope.newRequest.endDate;
         startDate.setHours(0,0,0,0);
         endDate.setHours(0,0,0,0);
-        // Validate Both dates Selected @TODO
+        // Validate Both dates Selected
         if(startDate != null && endDate != null) {
-            // Validate End Date After Start Date @TODO
+            // Validate End Date After Start Date
             if(endDate.getTime() >= startDate.getTime()) {
-                // Validate All Dates between Start and End are non-booked @TODO
+                // Validate All Dates between Start and End are non-booked
                 if($scope.item.requests.length == 0){
                     doUpdate = true;
                 }else {
@@ -226,7 +228,7 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
         }
 
         if(doUpdate){
-            // Submit Request to Server and update Item Object. @TODO
+            // Submit Request to Server and update Item Object.
             console.log("SUCCESSFULLY BOOKED ITEM");
             $scope.newRequest.itemId = $scope.item.id;
             $scope.newRequest.LenderProfileId = $scope.item.userProfileId;
@@ -249,8 +251,9 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
     };
 
     $scope.getDayClass = function(date, mode) {
-        // Return color class for booked dates. @TODO
-        if($scope.item != {}) {
+        // Return color class for booked dates.
+        // This If Breaks the static calendar. @TODO
+        //if($scope.itemLoaded) {
             if (mode === 'day') {
                 var dayToCheck = new Date(date);
 
@@ -265,12 +268,12 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
                     }
                 }
             }
-        }
+        //}
         return '';
     };
 
     $scope.disabled = function(date, mode) {
-        // Return true for booked dates. @TODO
+        // Return true for booked dates.
         if($scope.itemLoaded) {
             if (mode === 'day') {
                 var dayToCheck = new Date(date);
@@ -298,6 +301,35 @@ angular.module('sharebox.items').controller('ItemsController', ['$rootScope', '$
     $scope.open = function($event) {
         $event.stopPropagation();
         $scope.status.opened = true;
+    };
+
+    $scope.drawMap = function(){
+        console.log("DRAW MAP");
+        $scope.map = new GMaps({
+            el: '#map',
+            lat: $scope.global.user.Profile.pod.lat,
+            lng: $scope.global.user.Profile.pod.lng
+        });
+        $scope.map.addMarker({
+            lat: $scope.global.user.Profile.pod.lat,
+            lng: $scope.global.user.Profile.pod.lng
+        });
+        //$('#geocoding_form').submit(function(e){
+        //    e.preventDefault();
+        //    GMaps.geocode({
+        //        address: $('#address').val().trim(),
+        //        callback: function(results, status){
+        //            if(status=='OK'){
+        //                var latlng = results[0].geometry.location;
+        //                map.setCenter(latlng.lat(), latlng.lng());
+        //                map.addMarker({
+        //                    lat: latlng.lat(),
+        //                    lng: latlng.lng()
+        //                });
+        //            }
+        //        }
+        //    });
+        //});
     };
 
     $scope.today();

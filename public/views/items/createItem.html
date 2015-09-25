@@ -7,7 +7,10 @@
   <p class="lead"><h3>Post A New Item to Store or Lend via Your Sh@reBox Location.</h3></p>
 
 
-<section data-ng-controller="ItemsController" data-ng-init="newItem()" class="signin container-fluid">
+<section class="signin container-fluid" ng-hide="global.user.Profile.podId">
+    <h2>Please Fill out your Profile before posting an item.</h2>
+</section>
+<section class="signin container-fluid" ng-hide="!global.user.Profile.podId">
 
 <!-- <container class="forms"> -->
   <form role = "form" class="form-horizontal" data-ng-submit="create()">
@@ -18,7 +21,7 @@
       <div class="controls input-group input-group-lg">
         <input type="text" class="form-control" data-ng-model="newItem.name" id="name" placeholder="Title" required>
       <div class="form-actions input-group-btn">
-        <button type="submit" id="" class="btn btn-primary">Save&nbsp;</button>
+        <button type="submit" id="btnsave" class="btn btn-primary">Save&nbsp;</button>
           </div><!-- /btn-group -->
         </div><!-- /input-group -->
       </div><!-- /.col-xs-12 -->
@@ -31,7 +34,7 @@
           <div class="control-group">
              <label for="category" class="control-label">Category</label>
             <div class="controls">
-                <select id="category" name="categoryId" data-ng-model="item.categoryId"
+                <select id="category" name="categoryId" data-ng-model="newItem.categoryId"
                         data-ng-options="category.id as category.name for category in categories" class='form-control'>
                     <option value="">-- choose category --</option>
                 </select>
@@ -43,7 +46,7 @@
             <div class="control-group">
             <label for="condition" class="control-label">Condition</label>
             <div class="controls">
-                <select id="condition" name="conditionId" data-ng-model="item.conditionId"
+                <select id="condition" name="conditionId" data-ng-model="newItem.conditionId"
                         data-ng-options="condition.id as condition.name for condition in conditions" class='form-control'>
                     <option value="">-- choose condition --</option>
                 </select>

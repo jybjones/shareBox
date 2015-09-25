@@ -12,23 +12,13 @@ module.exports = {
         name: "Sh@rebox -  Production"
     },
     facebook: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
+        clientID: process.env.FACEBOOK_APP_ID,
+        clientSecret: process.env.FACEBOOK_APP_SECRET,
+        callbackURL: process.env.LOCAL_URL+"/auth/facebook/callback"
     },
     twitter: {
-        clientID: "CONSUMER_KEY",
-        clientSecret: "CONSUMER_SECRET",
-        callbackURL: "http://localhost:3000/auth/twitter/callback"
-    },
-    github: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/github/callback"
-    },
-    google: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/google/callback"
+        clientID: process.env.TWITTER_CONSUMER_KEY,
+        clientSecret: process.env.TWITTER_CONSUMER_SECRET,
+        callbackURL: process.env.LOCAL_URL+"/auth/twitter/callback"
     }
 };

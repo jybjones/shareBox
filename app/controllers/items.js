@@ -4,13 +4,14 @@
 var cloudinary = require('../../config/cloudinary');
 var db = require('../../config/sequelize');
 var fs = require('fs');
+var geocoder = require('geocoder');
 
 /**
  * Get Item
  */
 exports.item = function(req, res, next, id){
     console.log('id => ' + id);
-    db.item.find({ where: {id: id}, include: [db.userProfile, db.image, { model: db.request, include: [db.message] }]}).then(function(item){
+    db.item.find({ where: {id: id}, include: [{ model: db.userProfile, include: [db.state] }, db.image, { model: db.request, include: [db.message] }]}).then(function(item){
         if(!item) {
             return next(new Error('Failed to load item ' + id));
         } else {
@@ -38,7 +39,7 @@ exports.image = function(req, res, next, id){
 
 exports.request = function(req, res, next, id){
     console.log('id => ' + id);
-    db.request.find({ where: {id: id}, include: [{ model: db.item, include: [db.userProfile]}, { model: db.userProfile, as: "RequesterProfile"}, { model: db.message, include: [{ model: db.userProfile, as: "From"}]}]}).then(function(request){
+    db.request.find({ where: {id: id}, include: [{ model: db.item, include: [db.userProfile, { model: db.pod, include: [db.state]}]}, { model: db.userProfile, as: "RequesterProfile"}, { model: db.message, include: [{ model: db.userProfile, as: "From"}]}]}).then(function(request){
         if(!request) {
             return next(new Error('Failed to load item ' + id));
         } else {
@@ -57,19 +58,29 @@ exports.show = function(req, res){
  * List of Items
  */
 exports.all = function(req, res) {
-    db.item.findAll({include: [db.userProfile, db.image], order: [['updatedAt', 'DESC']]}).then(function(items){
-        return res.jsonp(items);
-    }).catch(function(err){
-        return res.render('500', {
-            error: err,
-            status: 500
-        });
+    db.userProfile.find({ where: {userId: req.user.id}}).then(function(profile){
+        if(profile.podId != null) {
+            db.item.findAll({
+                where: {podId: profile.podId},
+                include: [db.userProfile, db.image],
+                order: [['updatedAt', 'DESC']]
+            }).then(function (items) {
+                return res.jsonp(items);
+            }).catch(function (err) {
+                return res.render('500', {
+                    error: err,
+                    status: 500
+                });
+            });
+        }else{
+            return res.jsonp({});
+        }
     });
 };
 
 exports.allMine = function(req, res) {
-    db.userProfile.find({ where: {userId: req.user.id}, order: [['updatedAt', 'DESC']]}).then(function(profile){
-      db.item.findAll({where: {userProfileId: profile.id}, include: [db.userProfile, db.image]}).then(function(items){
+    db.userProfile.find({ where: {userId: req.user.id}}).then(function(profile){
+      db.item.findAll({where: {userProfileId: profile.id}, include: [db.userProfile, db.image], order: [['updatedAt', 'DESC']]}).then(function(items){
           console.log(items);
           return res.jsonp(items);
       }).catch(function(err){

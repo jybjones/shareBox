@@ -5,7 +5,6 @@ var _ = require('lodash');
 var LocalStrategy = require('passport-local').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-var GoogleStrategy = require('passport-google').Strategy;
 var config = require('./config');
 var db = require('./sequelize');
 var winston = require('./winston');
@@ -106,36 +105,6 @@ passport.use(new FacebookStrategy({
             done(err, null);
         });
     }
-));
-
-//Use google strategy
-passport.use(new GoogleStrategy({
-    returnURL: config.google.callbackURL,
-    realm: config.google.realm
-  },
-  function(identifier, profile, done) {
-    console.log(identifier);
-    console.log(profile);
-
-    db.User.find({where: {openId: identifier}}).then(function(user){
-        if(!user){
-            db.User.create({
-                name: profile.displayName,
-                email: profile.emails[0].value,
-                username: profile.displayName.replace(/ /g,''),
-                openId: identifier,
-            }).then(function(u){
-                winston.info('New User (google) : { id: ' + u.id + ', username: ' + u.username + ' }');
-                done(null, u);
-            })
-        } else {
-            winston.info('Login (google) : { id: ' + user.id + ', username: ' + user.username + ' }');
-            done(null, user);
-        }
-    }).catch(function(err){
-        done(err, null);
-    });
-  }
 ));
 
 module.exports = passport;

@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 				item.belongsTo(models.userProfile);
 				item.belongsTo(models.category);
                 item.belongsTo(models.condition);
+                item.belongsTo(models.pod);
                 item.hasMany(models.image);
                 item.hasMany(models.request);
 			}

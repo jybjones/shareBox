@@ -12,11 +12,6 @@
             <!-- <i class="icon-trash">Delete</i> -->
         </a>
     </div>
-    <div data-ng-show="global.user.Profile.id != item.userProfile.id">
-        <a class="btn" href="/#!/items/{{item.id}}"> Borrow
-            <!-- <i class="icon-edit">Edit</i> -->
-        </a>
-    </div>
     <div>{{item.description}}</div>
     <div data-ng-repeat="image in item.images">
         <img ng-src="{{ image.url }}"/>

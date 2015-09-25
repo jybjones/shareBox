@@ -69,8 +69,10 @@ module.exports = function(grunt) {
                     {cwd: 'bower_components/bootstrap/docs/assets/ico',                  src: ['*.*'],    dest: 'public/lib/bootstrap/docs/assets/ico', expand: true},
                     {cwd: 'bower_components/bootstrap/docs/assets/img',                  src: ['*.*'],    dest: 'public/lib/bootstrap/docs/assets/img', expand: true},
                     {cwd: 'bower_components/bootstrap/docs/assets/js',                   src: ['*.*'],    dest: 'public/lib/bootstrap/docs/assets/js', expand: true},
-                    {cwd: 'bower_components/jquery',                                     src: ['jquery*'], dest: 'public/lib/jquery', expand: true},
-                    {cwd: 'bower_components/ng-file-upload',                                     src: ['*.js'], dest: 'public/lib/ng-file-upload', expand: true}
+                    {cwd: 'bower_components/jquery/dist',                                     src: ['jquery*'], dest: 'public/lib/jquery', expand: true},
+                    {cwd: 'bower_components/ng-file-upload',                             src: ['*.js'], dest: 'public/lib/ng-file-upload', expand: true},
+                    {cwd: 'node_modules/gmaps',                                          src: ['*.js'], dest: 'public/lib/gmaps', expand: true},
+                    {cwd: 'node_modules/gmaps/lib',                                          src: ['*.js'], dest: 'public/lib/gmaps/lib', expand: true}
                 ]
             }
         },
