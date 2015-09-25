@@ -4,8 +4,14 @@
   font-size: 1.75em;
 }
 
+.approvedText {
+    font-size: bolder;
+    color: #0040D0;
+    font-size: 1.75em;
+}
+
 .signin {
-    max-width: 100%;
+    max-width: 500px;
     /*height: auto;*/
     margin: 10px auto;
     padding: 10px;
@@ -14,9 +20,21 @@
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 0 20px 0 #000000;
-  }
+}
 
-  /*///image Uploads///*/
+.itemForms {
+    max-width: 80%;
+    /*height: auto;*/
+    margin: 10px auto;
+    padding: 10px;
+    /* max-height: 200px; */
+    /* border: 7px solid; */
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 20px 0 #000000;
+}
+
+/*///image Uploads///*/
 .up-buttons{
   text-align: center;
   font-weight: bold;
@@ -26,9 +44,9 @@
 .drop-box{
   margin-right:25px;
 }
-.imgRemove {
-  background-color: pink;
-}
+/*.imgRemove {*/
+  /*background-color: pink;*/
+/*}*/
 
 /*.main > div {
   display: inline-block;

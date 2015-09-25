@@ -35,8 +35,5 @@ ul.articles li:not(:last-child) {
 }
 
 #map {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
     min-height: 300px;
 }

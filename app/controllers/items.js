@@ -39,7 +39,7 @@ exports.image = function(req, res, next, id){
 
 exports.request = function(req, res, next, id){
     console.log('id => ' + id);
-    db.request.find({ where: {id: id}, include: [{ model: db.item, include: [db.userProfile, { model: db.pod, include: [db.state]}]}, { model: db.userProfile, as: "RequesterProfile"}, { model: db.message, include: [{ model: db.userProfile, as: "From"}]}]}).then(function(request){
+    db.request.find({ where: {id: id}, include: [{ model: db.item, include: [db.userProfile, { model: db.pod, include: [db.state]}]}, { model: db.userProfile, as: "RequesterProfile"}, { model: db.message, include: [{ model: db.userProfile, as: "From"}]}], order: [[db.message, 'createdAt', 'ASC']]}).then(function(request){
         if(!request) {
             return next(new Error('Failed to load item ' + id));
         } else {

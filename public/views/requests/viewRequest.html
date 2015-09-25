@@ -1,9 +1,10 @@
 <section data-ng-controller="RequestsController" data-ng-init="findRequest()">
-    <span>{{item.updatedAt | date:'medium'}}</span> View My Items
-    <span>{{item.userProfile.firstName}}</span>
+    <div class="itemForms container-fluid">
+    <span class="updateText">{{item.updatedAt | date:'medium'}}</span>
+    <span class="updateText">From: {{item.userProfile.firstName}}</span>
 
-    <h2>{{item.name}}</h2>
-    <div>{{item.description}}</div>
+    <h2>Title: {{item.name}}</h2>
+    <h3>Description: {{item.description}}</h3>
     <div data-ng-repeat="image in item.images">
         <img ng-src="{{ image.url }}"/>
     </div>
@@ -11,7 +12,7 @@
         <li data-ng-repeat="message in request.messages">{{ message.From.firstName }}: {{ message.message }}</li>
     </ul>
     <div ng-show="request.approved">
-        <h3>Request Has Been Approved!</h3>
+        <h3 class="approvedText">Request Has Been Approved!</h3>
         You can pick up your item at:<BR />
         {{ request.item.pod.name }}<BR />
         {{ request.item.pod.address1 }}<BR />
@@ -28,4 +29,5 @@
             <!-- <i class="icon-edit">Edit</i> -->
         </a>
     </form>
+    </div>
 </section>

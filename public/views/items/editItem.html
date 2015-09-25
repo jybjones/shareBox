@@ -5,7 +5,7 @@
   </div>
   <p class="lead"><h3> Edit Item </h3></p>
 
-<section data-ng-controller="ItemsController" data-ng-init="findOne()" class="signin container-fluid">
+<section data-ng-controller="ItemsController" data-ng-init="findOne()" class="itemForms container-fluid">
 	<form role ="form" class="form-horizontal" data-ng-submit="update()">
 		<div class="control-group">
       <div class="row">
@@ -14,7 +14,7 @@
       <div class="controls input-group input-group-lg">
 				<input type="text" class="form-control" data-ng-model="item.name" id="name" placeholder="Title" required>
          <div class="form-actions input-group-btn">
-         <button type="submit" id="" class="btn btn-primary">Save&nbsp;</button>
+         <button type="submit" id="btnSaves" class="btn btn-primary">Save&nbsp;</button>
           </div><!-- /btn-group -->
         </div><!-- /input-group -->
       </div><!-- /.col-xs-12 -->
