@@ -51,31 +51,46 @@ exports.session = function(req, res) {
 exports.create = function(req, res) {
     var message = null;
 
-    var user = db.User.build(req.body);
+    db.User.find({where : { email: req.body.email }, include: [{model: db.userProfile, as: 'Profile'}]}).then(function(user){
+        if (!user) {
+            // User doesn't already exist, we can create them.
+            var user = db.User.build(req.body);
 
-    if((user.email.length < 3) || (user.password < 3)){
-        res.render('users/signup',{
-            message: "Invalid Email or Password",
-            user: user
-        });
-        return false;
-    }
-    user.provider = 'local';
-    user.salt = user.makeSalt();
-    user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
-    console.log('New User (local) : { id: ' + user.id + ' username: ' + user.email + ' }');
+            if ((user.email.length < 3) || (user.password < 3)) {
+                res.render('users/signup', {
+                    message: "Invalid Email or Password",
+                    user: user
+                });
+                return false;
+            }
+            user.provider = 'local';
+            user.salt = user.makeSalt();
+            user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
+            console.log('New User (local) : { id: ' + user.id + ' username: ' + user.email + ' }');
 
-    user.save().then(function(newUser){
-        db.userProfile.create({UserId: newUser.id}).then(function(newProfile){console.log(newProfile.id);});
-      req.login(user, function(err){
-        if(err) return next(err);
-        res.redirect('/#!/profile');
-      });
+            user.save().then(function (newUser) {
+                db.userProfile.create({UserId: newUser.id}).then(function (newProfile) {
+                    console.log(newProfile.id);
+                });
+                req.login(user, function (err) {
+                    if (err) res.redirect('/');
+                    res.redirect('/#!/profile');
+                });
+            }).catch(function (err) {
+                res.render('users/signup', {
+                    message: message,
+                    user: user
+                });
+            });
+        }else{
+            res.render('users/signup', {
+                message: "This User Already Exists, login to continue.",
+                user: user
+            });
+        }
     }).catch(function(err){
-      res.render('users/signup',{
-          message: message,
-          user: user
-      });
+        // Error State
+        res.jsonp(err);
     });
 };
 
@@ -83,7 +98,7 @@ exports.create = function(req, res) {
  * Send User
  */
 exports.me = function(req, res) {
-    db.User.find({where : { id: req.user.id }, include: [{model: db.userProfile, as: 'Profile'}]}).then(function(user){
+    db.User.find({where : { id: req.user.id }, include: [{model: db.userProfile, as: 'Profile', include: [db.state, db.pod]}]}).then(function(user){
         if (!user) return next(new Error('Failed to load User ' + id));
         res.jsonp(user);
     }).catch(function(err){

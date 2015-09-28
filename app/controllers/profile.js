@@ -78,7 +78,6 @@ exports.update = function(req, res){
                         if(finalPod.podId != null) {
                             updatedProfile.updateAttributes({ podId: finalPod.podId }).then(function(p){
                                 db.userProfile.find({ where: {userId: req.user.id}, include: [db.User, db.state]}).then(function(lastProfile) {
-                                    console.log(lastProfile);
                                     return res.jsonp(lastProfile);
                                 });
                             }).catch(function(err){
