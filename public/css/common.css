@@ -61,16 +61,24 @@ label {
       margin: 10px
   }
 
-.navbar-default{
+.navbar-fixed-top{
     background-color: #f8f8f8;
+    position-fixed
     font-size: larger;
     color:#FF9324;
-    background-color: #ECF3F2;
     text-shadow: .3px .3px 0px #000;
     border-color: transparent;
+
 }
+
+ body { padding-top: 70px;
+  /* Margin bottom by footer height */
+  /*padding-bottom: 200px;*/
+  margin: 0 0 100px;
+ }
+
 .navbar-nav>.active>a, .navbar-nav>.active>a:focus,  .navbar-nav>.active>a:hover {
-    color:#FF9324;
+    color:black;
     background-color: #FF9324;
     text-shadow: .3px .3px 0px #000;
 
@@ -102,12 +110,15 @@ label {
     box-shadow: 0 0 20px 0 #000000;
 }
 
-
-
 html, body {
   background-color: #FF9324;
-}
 
+}
+#main
+{
+overflow:auto;
+padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
 .content{
   background-color:#FF9324;
 }
@@ -179,13 +190,18 @@ a:hover, .btn.btn-primary:hover {
     /* opacity: .5; */
  }
 
-ul{
-  text-decoration: none;
-}
 li {list-style-type: none;}
 
-/*.soc-media-ul a {
-  text-align: center;
-  text-decoration: none;
 
-}*/
+footer.navbar-fixed-bottom {
+  text-align:center;
+    background-color: #f8f8f8;
+    position-fixed
+    font-size: larger;
+    color:#FF9324;
+    text-shadow: .3px .3px 0px #000;
+    border-color: transparent;
+
+}
+
+
