@@ -1,14 +1,40 @@
-# shareBox
+# [Sh@reBox](http://sharebox-capstone.herokuapp.com/#!/) is [online](http://sharebox-capstone.herokuapp.com/#!/)!
 
-Based off the MEAN.io boilerplate....
+
+Sh@rebox is an easy and safe way to lend, borrow, or trade items with local residents and friends in your area. Through a set of localized smart pods, modular storage spaces are filled with __insert awesome stuff here__. The online platform manages the inventory and keeps the process transparent and efficient, so sharing can be second nature. Got a slow cooker you used once for a party that’s now taking up space? Add it to Sh@rebox and allow your neighbors to use it too!
+
+Sh@rebox exists to help people make better use of what they already have by sharing items with nearby neighbors and friends that would otherwise go unused.
+
+###### Basic features list:
+ * Signup for the first time via Facebook, Twitter, or email
+ * Create a user profile (must put in an address so that the nearest Sh@reBox pod can be located)
+ * Post things to add to store and to borrow
+ * Post local articles/news
+
+######  Based off of MEAN.io Stack and BoilerPlate(original is in the READMEMean.md file located in root). Technologies include:
+ * MySQL
+ * AngularJS
+ * Node.js
+ * Express
+ * Jade
+ * Bootstrap
+ * Sequelize
+ * Grunt
+ * Passport
+ * Cloudinary
+ * Heroku
 
 To run locally:
-1) clone this repo
+```
+1) Clone this repo
 2) npm & bower install
-3) create Cloudinary account
+3) Create Cloudinary account. Cloudinary API is used for photo uploads. By default 5gs worth!! To use Cloudinary, you also need to download the ngFileUpload module.
+```
+Future versions will include:
 
-Heroku:
+ * Push notifications
+ * More pods/locations in the database
+ * User reviews
 
-Cloudinary API is used for photo uploads. By default 5gs worth!! To use Cloudinary, you also need to download the ngFileUpload module.
 
-V2:
+
